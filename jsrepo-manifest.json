@@ -575,6 +575,31 @@
 					}
 				},
 				{
+					"name": "header",
+					"directory": "src/lib/components/ui/header",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"header.svelte"
+					],
+					"localDependencies": [
+						"ui/mode-toggle",
+						"ui/navigation",
+						"ui/user",
+						"ui/wrap"
+					],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {
+						"../mode-toggle/mode-toggle.svelte": "{{ui/mode-toggle}}/mode-toggle.svelte",
+						"../navigation/navigation.svelte": "{{ui/navigation}}/navigation.svelte",
+						"../user/user.svelte": "{{ui/user}}/user.svelte",
+						"../wrap/wrap.svelte": "{{ui/wrap}}/wrap.svelte"
+					}
+				},
+				{
 					"name": "hover-card",
 					"directory": "src/lib/components/ui/hover-card",
 					"category": "ui",
@@ -697,6 +722,56 @@
 					],
 					"_imports_": {
 						"$lib/utils": "{{utils/index}}"
+					}
+				},
+				{
+					"name": "mode-toggle",
+					"directory": "src/lib/components/ui/mode-toggle",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"mode-toggle.svelte"
+					],
+					"localDependencies": [
+						"ui/button",
+						"utils/index"
+					],
+					"dependencies": [
+						"lucide-svelte@^0.485.0"
+					],
+					"devDependencies": [
+						"mode-watcher@^0.5.1"
+					],
+					"_imports_": {
+						"$lib/components/ui/button/index.js": "{{ui/button}}/index.js",
+						"$lib/utils": "{{utils/index}}"
+					}
+				},
+				{
+					"name": "navigation",
+					"directory": "src/lib/components/ui/navigation",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"navigation.svelte"
+					],
+					"localDependencies": [
+						"utils/index",
+						"interface/index",
+						"constants/index",
+						"ui/button"
+					],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}",
+						"$lib/interface": "{{interface/index}}",
+						"$lib/constants": "{{constants/index}}",
+						"../button": "{{ui/button}}"
 					}
 				},
 				{
@@ -1335,6 +1410,30 @@
 					],
 					"_imports_": {
 						"$lib/utils": "{{utils/index}}"
+					}
+				},
+				{
+					"name": "user",
+					"directory": "src/lib/components/ui/user",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"user.svelte"
+					],
+					"localDependencies": [
+						"ui/skeleton",
+						"ui/button"
+					],
+					"dependencies": [
+						"svelte-clerk@^0.10.7",
+						"lucide-svelte@^0.485.0"
+					],
+					"devDependencies": [],
+					"_imports_": {
+						"$lib/components/ui/skeleton/skeleton.svelte": "{{ui/skeleton}}/skeleton.svelte",
+						"$lib/components/ui/button": "{{ui/button}}"
 					}
 				},
 				{
