@@ -66,6 +66,7 @@
 		"@tiptap/extension-text-align": "^2.11.7",
 		"@tiptap/extension-underline": "^2.11.7",
 		"@tiptap/starter-kit": "^2.11.7",
-		"lucide-svelte": "^0.485.0"
+		"lucide-svelte": "^0.485.0",
+		"svelte-tel-input": "^3.6.0"
 	}
 }

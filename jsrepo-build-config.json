@@ -4,14 +4,16 @@
 		"./src/lib/components",
 		"./src/lib",
 		"./src/lib/constants",
-		"./src/lib/interface"
+		"./src/lib/interface",
+		"./src/lib/fxns"
 	],
 	"doNotListBlocks": [],
 	"doNotListCategories": [
 		"utils",
 		"hooks",
 		"constants",
-		"interface"
+		"interface",
+		"fxns"
 	],
 	"listBlocks": [],
 	"listCategories": [],
@@ -25,7 +27,8 @@
 		"utils",
 		"hooks",
 		"constants",
-		"interface"
+		"interface",
+		"fxns"
 	],
 	"excludeBlocks": [],
 	"excludeCategories": [],

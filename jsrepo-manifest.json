@@ -525,6 +525,7 @@
 						"utils/index",
 						"ui/button",
 						"ui/wrap",
+						"fxns/index",
 						"interface/index"
 					],
 					"dependencies": [],
@@ -534,6 +535,7 @@
 						"$lib/utils": "{{utils/index}}",
 						"$lib/components/ui/button": "{{ui/button}}",
 						"$lib/components/ui/wrap/wrap.svelte": "{{ui/wrap}}/wrap.svelte",
+						"$lib/fxns": "{{fxns/index}}",
 						"$lib/interface": "{{interface/index}}"
 					}
 				},
@@ -726,6 +728,40 @@
 					"_imports_": {
 						"$lib/utils": "{{utils/index}}",
 						"$lib/components/ui/button/index.js": "{{ui/button}}/index.js"
+					}
+				},
+				{
+					"name": "phone-input",
+					"directory": "src/lib/components/ui/phone-input",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"country-selector.svelte",
+						"flag.svelte",
+						"index.ts",
+						"phone-input.svelte"
+					],
+					"localDependencies": [
+						"ui/popover",
+						"ui/button",
+						"ui/command",
+						"ui/scroll-area",
+						"utils/index"
+					],
+					"dependencies": [
+						"svelte-tel-input@^3.6.0"
+					],
+					"devDependencies": [
+						"@lucide/svelte@^0.485.0"
+					],
+					"_imports_": {
+						"../popover": "{{ui/popover}}",
+						"../button": "{{ui/button}}",
+						"../command": "{{ui/command}}",
+						"../scroll-area": "{{ui/scroll-area}}",
+						"$lib/utils": "{{utils/index}}"
 					}
 				},
 				{
@@ -1325,6 +1361,26 @@
 					"name": "index",
 					"directory": "src/lib/constants",
 					"category": "constants",
+					"tests": false,
+					"subdirectory": false,
+					"list": false,
+					"files": [
+						"index.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [],
+					"devDependencies": []
+				}
+			]
+		},
+		{
+			"name": "fxns",
+			"blocks": [
+				{
+					"name": "index",
+					"directory": "src/lib/fxns",
+					"category": "fxns",
 					"tests": false,
 					"subdirectory": false,
 					"list": false,

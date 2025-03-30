@@ -16,6 +16,18 @@
 		{
 			name: 'tiktok',
 			href: 'https://www.tiktok.com/@mydhubeducation?_t=8jGuYP4VdSK&amp;_r=1'
+		},
+		{
+			name: "youtube",
+			href: "https://www.youtube.com/@dhubeducation2325"
+		},
+		{
+			name: "telegram",
+			href: "https://t.me/+EFfR1U0_BakwNjlk"
+		},
+		{
+			name: "whatsapp",
+			href: createWhatsAppUrl("Hello", "+447930739927")
 		}
 	];
 
@@ -100,6 +112,7 @@
 	import Email from './icons/email.svelte';
 	import Call from './icons/call.svelte';
 	import Locate from './icons/locate.svelte';
+	import { createWhatsAppUrl } from '$lib/fxns';
 
 	interface Props {
 		logo: any;
@@ -156,7 +169,7 @@
 	};
 </script>
 
-<Wrap class={cn('border-t bg-secondary px-4 pb-14 dark:bg-secondary md:pb-0', excluded && 'md:hidden')}>
+<Wrap class={cn('border-t bg-[#f5f5f5] px-4 pb-14 dark:bg-secondary md:pb-0', excluded && 'md:hidden')}>
 	<footer>
 		<div class="pb-6 pt-16 lg:pt-24">
 			<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -165,14 +178,14 @@
 						<Brand />
 					</div>
 
-					<p class="mt-6 max-w-md text-center text-sm leading-relaxed sm:max-w-xs sm:text-left">
+					<p class="mt-6 sm:max-w-md text-center text-sm leading-relaxed sm:text-left">
 						{slogan}
 					</p>
 
-					<div class="mt-8 flex justify-center gap-4 sm:justify-start">
+					<div class="mt-8 flex items-center gap-0.5 sm:gap-2 justify-center sm:justify-start">
 						{#each some as route, i}
 							{@const Icon = getSomeIcon(route)}
-							<Button size="icon" variant="outline">
+							<Button size="icon" variant="outline" class="p-0">
 								<span class="sr-only">{route.name}</span>
 								<Icon class="size-6" />
 							</Button>
