@@ -2,12 +2,16 @@
 	"$schema": "https://unpkg.com/jsrepo@1.45.1/schemas/registry-config.json",
 	"dirs": [
 		"./src/lib/components",
-		"./src/lib"
+		"./src/lib",
+		"./src/lib/constants",
+		"./src/lib/interface"
 	],
 	"doNotListBlocks": [],
 	"doNotListCategories": [
 		"utils",
-		"hooks"
+		"hooks",
+		"constants",
+		"interface"
 	],
 	"listBlocks": [],
 	"listCategories": [],
@@ -19,7 +23,9 @@
 	"includeCategories": [
 		"ui",
 		"utils",
-		"hooks"
+		"hooks",
+		"constants",
+		"interface"
 	],
 	"excludeBlocks": [],
 	"excludeCategories": [],

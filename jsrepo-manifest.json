@@ -511,6 +511,33 @@
 					}
 				},
 				{
+					"name": "footer",
+					"directory": "src/lib/components/ui/footer",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"footer.svelte"
+					],
+					"localDependencies": [
+						"constants/index",
+						"utils/index",
+						"ui/button",
+						"ui/wrap",
+						"interface/index"
+					],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {
+						"$lib/constants": "{{constants/index}}",
+						"$lib/utils": "{{utils/index}}",
+						"$lib/components/ui/button": "{{ui/button}}",
+						"$lib/components/ui/wrap/wrap.svelte": "{{ui/wrap}}/wrap.svelte",
+						"$lib/interface": "{{interface/index}}"
+					}
+				},
+				{
 					"name": "form",
 					"directory": "src/lib/components/ui/form",
 					"category": "ui",
@@ -1157,6 +1184,54 @@
 					}
 				},
 				{
+					"name": "tiptap-editor",
+					"directory": "src/lib/components/ui/tiptap-editor",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Display.svelte",
+						"DropdownMenu.svelte",
+						"IframeDialog.svelte",
+						"Menu.svelte",
+						"MoreMenu.svelte",
+						"Preview.svelte",
+						"tiptap-editor.svelte"
+					],
+					"localDependencies": [
+						"ui/dropdown-menu",
+						"utils/index",
+						"ui/button",
+						"ui/dialog",
+						"ui/input",
+						"ui/scroll-area"
+					],
+					"dependencies": [
+						"@tiptap/core@^2.11.7",
+						"lucide-svelte@^0.485.0",
+						"@tiptap/extension-image@^2.11.7",
+						"@tiptap/extension-text-align@^2.11.7",
+						"@tiptap/starter-kit@^2.11.7",
+						"@tiptap/extension-table@^2.11.7",
+						"@tiptap/extension-table-header@^2.11.7",
+						"@tiptap/extension-underline@^2.11.7",
+						"@tiptap/extension-table-row@^2.11.7",
+						"@tiptap/extension-link@^2.11.7"
+					],
+					"devDependencies": [],
+					"_imports_": {
+						"$lib/components/ui/dropdown-menu/index.js": "{{ui/dropdown-menu}}/index.js",
+						"$lib/utils": "{{utils/index}}",
+						"$lib/components/ui/button": "{{ui/button}}",
+						"$lib/components/ui/button/button.svelte": "{{ui/button}}/button.svelte",
+						"$lib/components/ui/button/index.js": "{{ui/button}}/index.js",
+						"$lib/components/ui/dialog/index.js": "{{ui/dialog}}/index.js",
+						"$lib/components/ui/input/index.js": "{{ui/input}}/index.js",
+						"$lib/components/ui/scroll-area/index.js": "{{ui/scroll-area}}/index.js"
+					}
+				},
+				{
 					"name": "toggle",
 					"directory": "src/lib/components/ui/toggle",
 					"category": "ui",
@@ -1225,6 +1300,41 @@
 					"_imports_": {
 						"$lib/utils": "{{utils/index}}"
 					}
+				},
+				{
+					"name": "wrap",
+					"directory": "src/lib/components/ui/wrap",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"wrap.svelte"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				}
+			]
+		},
+		{
+			"name": "constants",
+			"blocks": [
+				{
+					"name": "index",
+					"directory": "src/lib/constants",
+					"category": "constants",
+					"tests": false,
+					"subdirectory": false,
+					"list": false,
+					"files": [
+						"index.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [],
+					"devDependencies": []
 				}
 			]
 		},
@@ -1243,6 +1353,30 @@
 					],
 					"localDependencies": [],
 					"_imports_": {},
+					"dependencies": [],
+					"devDependencies": []
+				}
+			]
+		},
+		{
+			"name": "interface",
+			"blocks": [
+				{
+					"name": "index",
+					"directory": "src/lib/interface",
+					"category": "interface",
+					"tests": false,
+					"subdirectory": false,
+					"list": false,
+					"files": [
+						"index.ts"
+					],
+					"localDependencies": [
+						"constants/index"
+					],
+					"_imports_": {
+						"$lib/constants": "{{constants/index}}"
+					},
 					"dependencies": [],
 					"devDependencies": []
 				}
