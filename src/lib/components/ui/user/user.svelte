@@ -7,7 +7,6 @@
 
 </script>
 
-
 <ClerkLoading>
   <Skeleton class="size-10 rounded-full" />
 </ClerkLoading>

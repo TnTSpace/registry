@@ -10,7 +10,7 @@
 </script>
 
 <div class={className}>
-  <div class="md:container py-0">
+  <div class="md:container py-0 px-4">
     {@render children()}
   </div>
 </div>

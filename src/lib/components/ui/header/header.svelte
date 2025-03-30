@@ -15,7 +15,7 @@
 	<div class="relative flex items-center justify-between h-14">
 		<Brand />
 		<div class="flex items-center gap-4">
-			<Navigation />
+			<Navigation class="hidden md:flex" />
 			<div class="space-x-1 flex items-center gap-2">
 				<ModeToggle />
 				<User />

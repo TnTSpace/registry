@@ -21,10 +21,10 @@
 			name: "youtube",
 			href: "https://www.youtube.com/@dhubeducation2325"
 		},
-		{
-			name: "telegram",
-			href: "https://t.me/+EFfR1U0_BakwNjlk"
-		},
+		// {
+		// 	name: "telegram",
+		// 	href: "https://t.me/+EFfR1U0_BakwNjlk"
+		// },
 		{
 			name: "whatsapp",
 			href: createWhatsAppUrl("Hello", "+447930739927")
@@ -169,7 +169,7 @@
 	};
 </script>
 
-<Wrap class={cn('border-t bg-[#f5f5f5] px-4 pb-14 dark:bg-secondary md:pb-0', excluded && 'md:hidden')}>
+<Wrap class={cn('border-t bg-[#f5f5f5] pb-14 dark:bg-secondary md:pb-0', excluded && 'md:hidden')}>
 	<footer>
 		<div class="pb-6 pt-16 lg:pt-24">
 			<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -182,7 +182,7 @@
 						{slogan}
 					</p>
 
-					<div class="mt-8 flex items-center gap-0.5 sm:gap-2 justify-center sm:justify-start">
+					<div class="mt-8 flex items-center gap-2 justify-center sm:justify-start">
 						{#each some as route, i}
 							{@const Icon = getSomeIcon(route)}
 							<Button size="icon" variant="outline" class="p-0">
