@@ -56,7 +56,7 @@
 		{#if isAuthorized}
 			<Button
 				{href}
-				class="rounded-full"
+				class="rounded-full capitalize"
 				variant={isActiveRoute(href) ? 'default' : 'outline'}
 			>
 				{name}
