@@ -18,16 +18,16 @@
 			href: 'https://www.tiktok.com/@mydhubeducation?_t=8jGuYP4VdSK&amp;_r=1'
 		},
 		{
-			name: "youtube",
-			href: "https://www.youtube.com/@dhubeducation2325"
+			name: 'youtube',
+			href: 'https://www.youtube.com/@dhubeducation2325'
 		},
 		// {
 		// 	name: "telegram",
 		// 	href: "https://t.me/+EFfR1U0_BakwNjlk"
 		// },
 		{
-			name: "whatsapp",
-			href: createWhatsAppUrl("Hello", "+447930739927")
+			name: 'whatsapp',
+			href: createWhatsAppUrl('Hello', '+447930739927')
 		}
 	];
 
@@ -178,11 +178,11 @@
 						<Brand />
 					</div>
 
-					<p class="mt-6 sm:max-w-md text-center text-sm leading-relaxed sm:text-left">
+					<p class="mt-6 text-center text-sm leading-relaxed sm:max-w-md sm:text-left">
 						{slogan}
 					</p>
 
-					<div class="mt-8 flex items-center gap-2 justify-center sm:justify-start">
+					<div class="mt-8 flex items-center justify-center gap-2 sm:justify-start">
 						{#each some as route, i}
 							{@const Icon = getSomeIcon(route)}
 							<Button size="icon" variant="outline" class="p-0">
@@ -197,7 +197,7 @@
 					<div class="text-center sm:text-left">
 						<p class="text-lg font-medium">Who We Are</p>
 
-						<div class="mt-8 flex flex-col space-y-4 text-sm">
+						<div class="mt-8 flex flex-col text-sm">
 							{#each about as item, i}
 								<Button
 									href={item.href}
@@ -213,7 +213,7 @@
 					<div class="text-center sm:text-left">
 						<p class="text-lg font-medium">Helpful Links</p>
 
-						<div class="mt-8 flex flex-col space-y-4 text-sm">
+						<div class="mt-8 flex flex-col text-sm">
 							{#each helpful as item, i}
 								<Button
 									href={item.href}
@@ -229,12 +229,12 @@
 					<div class="text-center sm:text-left">
 						<p class="text-lg font-medium">Contact Us</p>
 
-						<div class="mt-8 flex flex-col space-y-4 text-sm md:items-start">
+						<div class="mt-8 flex flex-col text-sm md:items-start">
 							{#each contact as route, i}
 								{@const Icon = getContactIcon(route)}
 								<Button
 									href={route.href}
-									class="h-auto p-0 hover:bg-transparent dark:text-white"
+									class="pl-0 dark:text-white md:justify-start md:text-start"
 									variant="link"
 								>
 									<Icon class="size-6" />
@@ -255,7 +255,7 @@
 							<Button
 								href={route.href}
 								variant="link"
-								class="hover:/75 inline-block px-0.5 pl-0 underline transition dark:text-white capitalize"
+								class="hover:/75 inline-block px-0.5 pl-0 capitalize underline transition dark:text-white"
 							>
 								{route.name}
 							</Button>

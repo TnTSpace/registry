@@ -14,7 +14,9 @@
 <ClerkProvider publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
 	<Header logo={Logo} />
 	<Wrap>
-		{@render children()}
+		<div class="flex flex-col gap-4">
+			{@render children()}
+		</div>
 	</Wrap>
 	<Footer
 		slogan="Raising a total kingdom child"
