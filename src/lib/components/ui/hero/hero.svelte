@@ -2,12 +2,14 @@
 	import CenterContent from "./center-content.svelte";
 
   interface Props {
-    type: "center-content" | "3d-isometric" | "animated-features"
+    type: "center-content" | "3d-isometric" | "animated-features",
+    title: string;
+    subline: string
   }
-  let { type }: Props = $props()
+  let { type, title, subline }: Props = $props()
 </script>
 
 
 {#if type === 'center-content'}
-  <CenterContent />
+  <CenterContent {title} {subline} />
 {/if}
