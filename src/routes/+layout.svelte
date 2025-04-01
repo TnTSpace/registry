@@ -14,7 +14,7 @@
 <ClerkProvider publishableKey={PUBLIC_CLERK_PUBLISHABLE_KEY}>
 	<Header logo={Logo} />
 	<Wrap>
-		<div class="flex flex-col gap-4">
+		<div class="flex flex-col gap-4 p-4">
 			{@render children()}
 		</div>
 	</Wrap>

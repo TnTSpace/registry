@@ -5,6 +5,7 @@
 	import * as ImageCropper from '$lib/components/ui/image-cropper';
 	import { getFileFromUrl } from '$lib/components/ui/image-cropper';
 	import Hero from '$lib/components/ui/hero/hero.svelte';
+	import TagsInput from '$lib/components/ui/tags-input/tags-input.svelte';
 
 	let country = $state<CountryCode>('NG');
 
@@ -18,7 +19,7 @@
 	title="Raising a total kingdom child"
 	subline="We raise our children to be heavenly focused, earthly relevant and significant as the salt of the earth and the light of the world"
 />
-<h1>Homepage</h1>
+<TagsInput />
 <PhoneInput {country} />
 
 <!-- <TiptapEditor {getcontent} /> -->
