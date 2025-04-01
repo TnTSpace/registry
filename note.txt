@@ -1,1 +1,2 @@
 shadcn blocks: https://shadcn-ui-blocks.vercel.app/
+free shadcn blocks: https://github.com/shadcnblockscom/shadcn-ui-blocks

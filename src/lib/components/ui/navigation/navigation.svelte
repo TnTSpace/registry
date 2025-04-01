@@ -1,82 +1,66 @@
+<script module>
+	let defaultLinks: iRoute[] = [
+		{
+			name: 'home',
+			href: '/',
+			isAuthorized: true
+		},
+		{
+			name: 'admin',
+			href: '/admin',
+			isAuthorized: true
+		},
+		{
+			name: 'about',
+			href: '/about',
+			isAuthorized: true
+		},
+		{
+			name: 'blogs',
+			href: '/blogs',
+			isAuthorized: true
+		}
+	];
+</script>
+
 <script lang="ts">
 	import { page } from '$app/state';
 	import { cn } from '$lib/utils';
 	import { getContext } from 'svelte';
-	import type { iUser } from '$lib/interface';
+	import type { iRoute, iUser } from '$lib/interface';
 	import { Role } from '$lib/constants';
 	import { Button } from '../button';
 
 	interface Props {
 		class?: string;
+		links?: iRoute[];
 	}
 
 	const me = getContext('me') as iUser;
 
-	let { class: className }: Props = $props();
+	let { class: className, links = defaultLinks }: Props = $props();
 
 	$effect(() => {
-		const condition = me && me.role === Role.ADMIN
-		console.log({ condition, me })
-	})
+		const condition = me && me.role === Role.ADMIN;
+		console.log({ condition, me });
+	});
 
-	let isAuthorized = $derived(me && me.role === Role.ADMIN)
+	let isAuthorized = $derived(me && me.role === Role.ADMIN);
 
 	const pathname = page.url.pathname;
 	const isActiveRoute = (path: string) => pathname === path;
 </script>
 
-<div class={cn('flex', className)}>
-	{#if isAuthorized}
-		<Button
-			class="rounded-full"
-			href="/admin"
-			variant={isActiveRoute('/admin') ? 'default' : 'outline'}
-		>
-			Admin
-		</Button>
-	{/if}
-	<Button class="rounded-full" href="/" variant={isActiveRoute('/') ? 'default' : 'outline'}
-		>Home</Button
-	>
-	<Button
-		class="rounded-full"
-		href="/about"
-		variant={isActiveRoute('/about') ? 'default' : 'outline'}
-		>About
-	</Button>
-	<Button
-		class="rounded-full"
-		href="/services"
-		variant={isActiveRoute('/services') ? 'default' : 'outline'}
-	>
-		Services
-	</Button>
-	<Button
-		class="rounded-full"
-		href="/courses"
-		variant={isActiveRoute('/courses') ? 'default' : 'outline'}
-	>
-		Courses
-	</Button>
-	<Button
-		class="rounded-full"
-		href="/affiliate"
-		variant={isActiveRoute('/affiliate') ? 'default' : 'outline'}
-	>
-		Affiliate
-	</Button>
-	<Button
-		class="rounded-full"
-		href="/finance"
-		variant={isActiveRoute('/finance') ? 'default' : 'outline'}
-	>
-		Finance
-	</Button>
-	<Button
-		class="rounded-full"
-		href="/blogs"
-		variant={isActiveRoute('/blog') ? 'default' : 'outline'}
-	>
-		Blogs
-	</Button>
+<div class={cn('flex gap-2', className)}>
+	{#each links as { href, name, isAuthorized}, i}
+		{#if isAuthorized}
+			<Button
+				{href}
+				class="rounded-full"
+				variant={isActiveRoute(href) ? 'default' : 'outline'}
+			>
+				{name}
+			</Button>
+		{/if}
+	{/each}
 </div>
