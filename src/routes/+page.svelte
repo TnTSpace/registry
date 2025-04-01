@@ -4,6 +4,7 @@
 	import TiptapEditor from "$lib/components/ui/tiptap-editor/tiptap-editor.svelte";
 	import * as ImageCropper from "$lib/components/ui/image-cropper";
 	import { getFileFromUrl } from "$lib/components/ui/image-cropper"
+	import Hero from "$lib/components/ui/hero/hero.svelte";
 
 	let country = $state<CountryCode>("NG")
 
@@ -12,6 +13,7 @@
 	}
 </script>
 
+<Hero type="center-content" />
 <h1>Homepage</h1>
 <PhoneInput {country} />
 
