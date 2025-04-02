@@ -1288,6 +1288,25 @@
 					"_imports_": {}
 				},
 				{
+					"name": "spin-loader",
+					"directory": "src/lib/components/ui/spin-loader",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"spin-loader.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					}
+				},
+				{
 					"name": "switch",
 					"directory": "src/lib/components/ui/switch",
 					"category": "ui",
