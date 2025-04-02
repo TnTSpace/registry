@@ -6,12 +6,15 @@
 	import { getFileFromUrl } from '$lib/components/ui/image-cropper';
 	import Hero from '$lib/components/ui/hero/hero.svelte';
 	import TagsInput from '$lib/components/ui/tags-input/tags-input.svelte';
+	import { FileDropZone } from '$lib/components/ui/file-drop-zone';
 
 	let country = $state<CountryCode>('NG');
 
 	const getcontent = (content: string) => {
 		console.log({ content });
 	};
+
+	const onUpload = async (file: File[]) => {};
 </script>
 
 <Hero
@@ -43,3 +46,5 @@
 		</ImageCropper.Controls>
 	</ImageCropper.Dialog>
 </ImageCropper.Root>
+
+<FileDropZone {onUpload} />
