@@ -7,14 +7,13 @@
 	interface Props {
 		logo: any
 	}
-
 	let { logo: Brand }: Props = $props()
 </script>
 
 <Wrap class="sticky left-0 top-0 z-[50] bg-white dark:bg-secondary shadow-lg">
 	<div class="relative flex items-center justify-between h-14">
 		<Brand />
-		<div class="flex items-center gap-4">
+		<div class="flex items-center gap-2">
 			<Navigation class="hidden md:flex" />
 			<div class="space-x-1 flex items-center gap-2">
 				<ModeToggle />

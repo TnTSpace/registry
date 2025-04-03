@@ -7,6 +7,7 @@
 	import Hero from '$lib/components/ui/hero/hero.svelte';
 	import TagsInput from '$lib/components/ui/tags-input/tags-input.svelte';
 	import Dropzone from '$lib/components/widgets/Dropzone.svelte';
+	import TelInput from '$lib/components/ui/tel-input/tel-input.svelte';
 
 	let country = $state<CountryCode>('NG');
 
@@ -23,6 +24,7 @@
 />
 <TagsInput />
 <PhoneInput {country} />
+<TelInput {country} />
 
 <!-- <TiptapEditor {getcontent} /> -->
 

@@ -1406,6 +1406,29 @@
 					}
 				},
 				{
+					"name": "tel-input",
+					"directory": "src/lib/components/ui/tel-input",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"tel-input.svelte"
+					],
+					"localDependencies": [
+						"ui/phone-input"
+					],
+					"dependencies": [
+						"svelte-tel-input@^3.6.0",
+						"lucide-svelte@^0.485.0"
+					],
+					"devDependencies": [],
+					"_imports_": {
+						"../phone-input/country-selector.svelte": "{{ui/phone-input}}/country-selector.svelte",
+						"../phone-input": "{{ui/phone-input}}"
+					}
+				},
+				{
 					"name": "textarea",
 					"directory": "src/lib/components/ui/textarea",
 					"category": "ui",
