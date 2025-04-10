@@ -518,19 +518,33 @@
 					"subdirectory": true,
 					"list": true,
 					"files": [
+						"drop-zone.svelte",
 						"file-drop-zone.svelte",
 						"index.ts"
 					],
 					"localDependencies": [
-						"utils/index"
+						"ui/button",
+						"ui/progress",
+						"interface/index",
+						"utils/index",
+						"ui/skeleton",
+						"ui/spin-loader"
 					],
-					"dependencies": [],
+					"dependencies": [
+						"@toolsntuts/utils@^0.2.9"
+					],
 					"devDependencies": [
 						"@lucide/svelte@^0.485.0",
+						"svelte-sonner@^0.3.28",
 						"bits-ui@^1.3.14"
 					],
 					"_imports_": {
-						"$lib/utils": "{{utils/index}}"
+						"$lib/components/ui/button": "{{ui/button}}",
+						"$lib/components/ui/progress": "{{ui/progress}}",
+						"$lib/interface": "{{interface/index}}",
+						"$lib/utils": "{{utils/index}}",
+						"../skeleton": "{{ui/skeleton}}",
+						"../spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte"
 					}
 				},
 				{
