@@ -44,6 +44,17 @@
 		uploadedAt: number;
 		image: () => Promise<iImage>;
 	};
+
+	export function imagesToUploadedFiles(images: iImage[]): UploadedFile[] {
+		return images.map((image) => ({
+			name: image.url.split('/').pop() ?? 'unknown',
+			type: 'image/*', // or extract mime from URL if you have it
+			size: 0, // if you know the size, set it — otherwise leave as 0
+			uploadedAt: new Date(image.xata_createdat).getTime(),
+			image: async () => image
+		}));
+	}
+	
 </script>
 
 <script lang="ts">
@@ -57,14 +68,13 @@
 	import { Progress } from '$lib/components/ui/progress';
 	import type { iImage } from '$lib/interface';
 	import { cn } from '$lib/utils';
-	import { sleep } from '$lib/utils/sleep';
 	import { XIcon } from '@lucide/svelte';
 	import type { iResult } from '@toolsntuts/utils';
 	import { onDestroy } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import { SvelteDate } from 'svelte/reactivity';
-	import SpinLoader from '../ui/spin-loader/spin-loader.svelte';
-	import { Skeleton } from '../ui/skeleton';
+	import { Skeleton } from '../skeleton';
+	import SpinLoader from '../spin-loader/spin-loader.svelte';
 
 	interface Props {
 		class?: string;
@@ -72,6 +82,7 @@
 		maxFiles?: number;
 		accept?: AcceptFileType;
 		imagekitEndpoint: string;
+		initialFiles?: iImage[];
 	}
 
 	let {
@@ -79,17 +90,16 @@
 		maxFiles = 4,
 		onUploaded,
 		accept = 'image/*',
-		imagekitEndpoint
+		imagekitEndpoint,
+		initialFiles = []
 	}: Props = $props();
 
-	let files = $state<UploadedFile[]>([]);
+	let files = $state<UploadedFile[]>(imagesToUploadedFiles(initialFiles));
 	let date = new SvelteDate();
 	let isDeleting = $state(false);
 
 	const onUpload: FileDropZoneProps['onUpload'] = async (files) => {
-		const uploaded = await Promise.allSettled(files.map((file) => uploadFile(file)));
-		console.log({ uploaded });
-		console.log('files have been uploaded');
+		await Promise.allSettled(files.map((file) => uploadFile(file)));
 	};
 
 	const onFileRejected: FileDropZoneProps['onFileRejected'] = async ({ reason, file }) => {
@@ -99,10 +109,6 @@
 	const uploadFile = async (file: File) => {
 		// don't upload duplicate files
 		if (files.find((f) => f.name === file.name)) return;
-		// const urlPromise = new Promise<string>((resolve) => {
-		// 	// add some fake loading time
-		// 	sleep(1000).then(() => resolve(URL.createObjectURL(file)));
-		// });
 
 		const promise = async () => {
 			const formData = new FormData();
@@ -146,7 +152,6 @@
 	});
 
 	const removeFile = async (file: UploadedFile, i: number, image: iImage) => {
-		// URL.revokeObjectURL(file.url);
 		isDeleting = true;
 		const promise = async (fileId: string) => {
 			const formData = new FormData();
@@ -170,7 +175,6 @@
 			toast.success('Successfully deleted');
 			files = [...files.slice(0, i), ...files.slice(i + 1)];
 		}
-		// todo: remove from server
 	};
 </script>
 
@@ -185,53 +189,24 @@
 	/>
 	<div class="flex flex-col gap-2">
 		{#each files as file, i (file.name)}
-
-		{#await file.image()}
-		<div class="flex place-items-center justify-between gap-2">
-			<div class="flex place-items-center gap-2">
-				<Skeleton class="relative size-9 overflow-clip" />
-				<div class="flex flex-col">
-					<span>{file.name}</span>
-					<span class="text-xs text-muted-foreground">{displaySize(file.size)}</span>
-				</div>
-			</div>
-			<Progress
-				class="h-2 w-full flex-grow"
-				value={((date.getTime() - file.uploadedAt) / 1000) * 100}
-				max={100}
-			/>
-		</div>
-		{:then image}
-		<div class="flex place-items-center justify-between gap-2">
-			<div class="flex place-items-center gap-2">
-					<div class="relative size-9 overflow-clip">
-						<img
-							src={image.url}
-							alt={file.name}
-							class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-clip"
-						/>
+			{#await file.image()}
+				<div class="flex place-items-center justify-between gap-2">
+					<div class="flex place-items-center gap-2">
+						<Skeleton class="relative size-9 overflow-clip" />
+						<div class="flex flex-col">
+							<span>{file.name}</span>
+							<span class="text-xs text-muted-foreground">{displaySize(file.size)}</span>
+						</div>
 					</div>
-				<div class="flex flex-col">
-					<span>{file.name}</span>
-					<span class="text-xs text-muted-foreground">{displaySize(file.size)}</span>
+					<Progress
+						class="h-2 w-full flex-grow"
+						value={((date.getTime() - file.uploadedAt) / 1000) * 100}
+						max={100}
+					/>
 				</div>
-			</div>
-			{#if isDeleting}
-				<Button variant="outline" size="icon">
-					<SpinLoader class="border-primary dark:border-white" />
-				</Button>
-			{:else}
-				<Button variant="outline" size="icon" onclick={() => removeFile(file, i, image)}>
-					<XIcon />
-				</Button>
-			{/if}
-		</div>
-		{:catch error}
-			<p>{error}</p>
-		{/await}
-			<!-- <div class="flex place-items-center justify-between gap-2">
-				<div class="flex place-items-center gap-2">
-					{#await file.image() then image}
+			{:then image}
+				<div class="flex place-items-center justify-between gap-2">
+					<div class="flex place-items-center gap-2">
 						<div class="relative size-9 overflow-clip">
 							<img
 								src={image.url}
@@ -239,19 +214,11 @@
 								class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-clip"
 							/>
 						</div>
-					{/await}
-					<div class="flex flex-col">
-						<span>{file.name}</span>
-						<span class="text-xs text-muted-foreground">{displaySize(file.size)}</span>
+						<div class="flex flex-col">
+							<span>{file.name}</span>
+							<span class="text-xs text-muted-foreground">{displaySize(file.size)}</span>
+						</div>
 					</div>
-				</div>
-				{#await file.image()}
-					<Progress
-						class="h-2 w-full flex-grow"
-						value={((date.getTime() - file.uploadedAt) / 1000) * 100}
-						max={100}
-					/>
-				{:then image}
 					{#if isDeleting}
 						<Button variant="outline" size="icon">
 							<SpinLoader class="border-primary dark:border-white" />
@@ -261,8 +228,10 @@
 							<XIcon />
 						</Button>
 					{/if}
-				{/await}
-			</div> -->
+				</div>
+			{:catch error}
+				<p>{error}</p>
+			{/await}
 		{/each}
 	</div>
 </div>

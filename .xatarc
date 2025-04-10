@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Olanrewaju-Ibironke-s-workspace-o1v51t.us-east-1.xata.sh/db/sandbox",
+  "codegen": {
+    "output": "src/lib/xata/index.ts"
+  }
+}

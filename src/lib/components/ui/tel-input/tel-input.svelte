@@ -9,7 +9,7 @@
 	import CountrySelector from '../phone-input/country-selector.svelte';
 	import { defaultOptions, type Props } from '../phone-input';
 
-  let {
+	let {
 		class: className = undefined,
 		defaultCountry = null,
 		country = $bindable(defaultCountry),
@@ -24,7 +24,7 @@
 		name = undefined,
 		...rest
 	}: Props = $props();
-  
+
 	let selectedCountry = $state<CountryCode | null>(null);
 	// let value = $state<E164Number | null>(null);
 
@@ -32,9 +32,9 @@
 		const { value } = e.currentTarget;
 		selectedCountry = (value as CountryCode) || null;
 	};
-  
+
 	let el: HTMLInputElement | undefined = $state();
-  
+
 	export const focus = () => {
 		// sort of an after update kinda thing
 		setTimeout(() => {
@@ -42,33 +42,20 @@
 		}, 0);
 	};
 
-  const countries = normalizedCountries
+	const countries = normalizedCountries;
 </script>
 
-
-<div class="space-y-2" dir="ltr">
-	<div class="flex rounded-lg shadow-sm shadow-black/[.04]">
-    <CountrySelector {order} {countries} bind:selected={country} onselect={focus} />
-		<TelInput
-      bind:el
-			required
-			placeholder="Enter phone number"
-			class="-ml-px flex h-9 w-full rounded-lg rounded-l-none border border-input bg-background px-3 py-2 text-sm text-foreground shadow-none shadow-black/[.04] ring-offset-background transition-shadow placeholder:text-muted-foreground/70 focus-visible:z-10 focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-			bind:country={selectedCountry}
-			bind:value
-			options={{
-				format: 'international'
-			}}
-		/>
-	</div>
-	<p class="mt-2 text-xs text-muted-foreground" role="region" aria-live="polite">
-		Built with <a
-			class="underline hover:text-foreground"
-			href="https://github.com/gyurielf/svelte-tel-input/tree/main"
-			target="_blank"
-			rel="noopener nofollow"
-		>
-			svelte-tel-input
-		</a>
-	</p>
+<div class="flex rounded-lg shadow-sm shadow-black/[.04]">
+	<CountrySelector {order} {countries} bind:selected={country} onselect={focus} />
+	<TelInput
+		bind:el
+		required
+		placeholder="Enter phone number"
+		class="-ml-px flex h-10 w-full rounded-lg rounded-l-none border border-input bg-background px-3 py-2 text-sm text-foreground shadow-none shadow-black/[.04] ring-offset-background transition-shadow placeholder:text-muted-foreground/70 focus-visible:z-10 focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+		bind:country={selectedCountry}
+		bind:value
+		options={{
+			format: 'international'
+		}}
+	/>
 </div>
