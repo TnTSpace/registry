@@ -688,6 +688,7 @@
 					"subdirectory": true,
 					"list": true,
 					"files": [
+						"cropper.svelte",
 						"image-cropper-cancel.svelte",
 						"image-cropper-controls.svelte",
 						"image-cropper-crop.svelte",

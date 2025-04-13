@@ -96,7 +96,7 @@
 
 	let files = $state<UploadedFile[]>(imagesToUploadedFiles(initialFiles));
 	let date = new SvelteDate();
-	let isDeleting = $state(false);
+	let deletingId = $state('')
 
 	const onUpload: FileDropZoneProps['onUpload'] = async (files) => {
 		await Promise.allSettled(files.map((file) => uploadFile(file)));
@@ -142,6 +142,7 @@
 			// URL.revokeObjectURL(file.url);
 		}
 	});
+
 	$effect(() => {
 		const interval = setInterval(() => {
 			date.setTime(Date.now());
@@ -152,7 +153,7 @@
 	});
 
 	const removeFile = async (file: UploadedFile, i: number, image: iImage) => {
-		isDeleting = true;
+		deletingId = image.xata_id
 		const promise = async (fileId: string) => {
 			const formData = new FormData();
 			formData.set('fileId', fileId);
@@ -168,14 +169,18 @@
 		};
 		const { message, status } = await promise(image.fileId);
 
-		isDeleting = false;
 		if (status === 'error') {
 			toast.error(message);
 		} else {
 			toast.success('Successfully deleted');
 			files = [...files.slice(0, i), ...files.slice(i + 1)];
 		}
+		deletingId = ''
 	};
+
+	const updateFile = async () => {
+
+	}
 </script>
 
 <div class={cn('flex w-full flex-col gap-2', className)}>
@@ -219,7 +224,7 @@
 							<span class="text-xs text-muted-foreground">{displaySize(file.size)}</span>
 						</div>
 					</div>
-					{#if isDeleting}
+					{#if deletingId === image.xata_id}
 						<Button variant="outline" size="icon">
 							<SpinLoader class="border-primary dark:border-white" />
 						</Button>
