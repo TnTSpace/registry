@@ -11,6 +11,7 @@
 	let { children, class: className, ...rest }: ImageCropperDialogProps = $props();
 
 	const dialogState = useImageCropperDialog();
+
 </script>
 
 <Dialog.Root bind:open={dialogState.rootState.open}>

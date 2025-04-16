@@ -15,7 +15,7 @@
 	<div class="flex justify-center">
 		<a
 			class="inline-flex items-center gap-x-2 rounded-full border p-1 ps-3 text-sm transition"
-			href="#"
+			href="/#"
 		>
 			PRO release - Join to waitlist
 			<span

@@ -4,10 +4,12 @@
 
 	interface Props {
 		src?: string;
-    onCropped: (url: string) => void
+    onCropped: (url: string) => void;
+		open: boolean;
+		label?: HTMLLabelElement
 	}
 
-	let { src }: Props = $props();
+	let { src, open = $bindable(), label = $bindable() }: Props = $props();
 
 	const onCropped = async (url: string) => {
 		// if you need the file for a form you can call getFileFromUrl with the cropped url
@@ -17,7 +19,7 @@
 </script>
 
 <ImageCropper.Root {src} {onCropped}>
-	<ImageCropper.UploadTrigger>
+	<ImageCropper.UploadTrigger {label}>
 		<ImageCropper.Preview />
 	</ImageCropper.UploadTrigger>
 	<ImageCropper.Dialog>

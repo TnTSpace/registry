@@ -45,8 +45,8 @@
 		image: () => Promise<iImage>;
 	};
 
-	export function imagesToUploadedFiles(images: iImage[]): UploadedFile[] {
-		return images.map((image) => ({
+	export function imagesToUploadedFiles(initialImages: iImage[]): UploadedFile[] {
+		return initialImages.map((image) => ({
 			name: image.url.split('/').pop() ?? 'unknown',
 			type: 'image/*', // or extract mime from URL if you have it
 			size: 0, // if you know the size, set it — otherwise leave as 0
@@ -54,7 +54,6 @@
 			image: async () => image
 		}));
 	}
-	
 </script>
 
 <script lang="ts">
@@ -70,15 +69,17 @@
 	import { cn } from '$lib/utils';
 	import { XIcon } from '@lucide/svelte';
 	import type { iResult } from '@toolsntuts/utils';
-	import { onDestroy } from 'svelte';
-	import { toast } from 'svelte-sonner';
+	import { onDestroy, onMount } from 'svelte';
+	import { toast, Toaster } from 'svelte-sonner';
 	import { SvelteDate } from 'svelte/reactivity';
 	import { Skeleton } from '../skeleton';
 	import SpinLoader from '../spin-loader/spin-loader.svelte';
+	import { CropIcon } from 'lucide-svelte';
+	import Cropper from '../image-cropper/cropper.svelte';
 
 	interface Props {
 		class?: string;
-		onUploaded: (files: UploadedFile[]) => void;
+		onUploaded: (files: iImage[]) => void;
 		maxFiles?: number;
 		accept?: AcceptFileType;
 		imagekitEndpoint: string;
@@ -96,7 +97,8 @@
 
 	let files = $state<UploadedFile[]>(imagesToUploadedFiles(initialFiles));
 	let date = new SvelteDate();
-	let deletingId = $state('')
+	let images: iImage[] = $state(initialFiles)
+	let deletingId = $state('');
 
 	const onUpload: FileDropZoneProps['onUpload'] = async (files) => {
 		await Promise.allSettled(files.map((file) => uploadFile(file)));
@@ -125,6 +127,10 @@
 				throw new Error(message);
 			}
 			const image = data as iImage;
+
+			images = [...images, image];
+			console.log("in here")
+			onUploaded(images)
 			return image;
 		};
 
@@ -135,6 +141,7 @@
 			uploadedAt: Date.now(),
 			image: promise
 		});
+
 	};
 
 	onDestroy(async () => {
@@ -153,7 +160,7 @@
 	});
 
 	const removeFile = async (file: UploadedFile, i: number, image: iImage) => {
-		deletingId = image.xata_id
+		deletingId = image.xata_id;
 		const promise = async (fileId: string) => {
 			const formData = new FormData();
 			formData.set('fileId', fileId);
@@ -174,13 +181,13 @@
 		} else {
 			toast.success('Successfully deleted');
 			files = [...files.slice(0, i), ...files.slice(i + 1)];
+			images = images.filter(img => img.fileId !== image.fileId)
 		}
-		deletingId = ''
+		deletingId = '';
+		onUploaded(images)
 	};
 
-	const updateFile = async () => {
-
-	}
+	onMount(() => onUploaded(images))
 </script>
 
 <div class={cn('flex w-full flex-col gap-2', className)}>
@@ -210,29 +217,38 @@
 					/>
 				</div>
 			{:then image}
-				<div class="flex place-items-center justify-between gap-2">
-					<div class="flex place-items-center gap-2">
-						<div class="relative size-9 overflow-clip">
+				<!-- {@const images = updateImages(image)} -->
+				<div class="grid grid-cols-[1fr_88px] place-items-center gap-2">
+					<div class="grid w-full grid-cols-[40px_1fr] place-items-center gap-2">
+						<div class="relative size-10 overflow-clip">
 							<img
 								src={image.url}
 								alt={file.name}
 								class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-clip"
 							/>
 						</div>
-						<div class="flex flex-col">
-							<span>{file.name}</span>
-							<span class="text-xs text-muted-foreground">{displaySize(file.size)}</span>
+						<div class="flex w-full flex-col">
+							<span class="w-[99%] overflow-hidden overflow-ellipsis whitespace-nowrap"
+								>{file.name}</span
+							>
+							{#if file.size === 0}
+								<span class="text-xs text-muted-foreground">less than {displaySize(2 * MEGABYTE)}</span>
+							{:else}
+								<span class="text-xs text-muted-foreground">{displaySize(file.size)}</span>
+							{/if}
 						</div>
 					</div>
-					{#if deletingId === image.xata_id}
-						<Button variant="outline" size="icon">
-							<SpinLoader class="border-primary dark:border-white" />
-						</Button>
-					{:else}
-						<Button variant="outline" size="icon" onclick={() => removeFile(file, i, image)}>
-							<XIcon />
-						</Button>
-					{/if}
+					<div class="flex items-center space-x-2">
+						{#if deletingId === image.xata_id}
+							<Button variant="outline" size="icon">
+								<SpinLoader class="border-primary dark:border-white" />
+							</Button>
+						{:else}
+							<Button variant="outline" size="icon" onclick={() => removeFile(file, i, image)}>
+								<XIcon />
+							</Button>
+						{/if}
+					</div>
 				</div>
 			{:catch error}
 				<p>{error}</p>
@@ -240,3 +256,4 @@
 		{/each}
 	</div>
 </div>
+<Toaster position="top-center" richColors />

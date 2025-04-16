@@ -6,11 +6,15 @@
 	import { type WithChildren } from 'bits-ui';
 	import { useImageCropperTrigger } from './image-cropper.svelte.js';
 
-	let { children }: WithChildren = $props();
+	interface Props {
+		label?: HTMLLabelElement
+	}
+
+	let { children, label=$bindable() }: WithChildren & Props = $props();
 
 	const triggerState = useImageCropperTrigger();
 </script>
 
-<label for={triggerState.rootState.id} class="hover:cursor-pointer">
+<label bind:this={label} for={triggerState.rootState.id} class="hover:cursor-pointer">
 	{@render children?.()}
 </label>

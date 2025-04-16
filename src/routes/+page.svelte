@@ -9,6 +9,7 @@
 	import TelInput from '$lib/components/ui/tel-input/tel-input.svelte';
 	import { onMount } from 'svelte';
 	import type { PageServerData } from './$types';
+	import type { iImage } from '$lib/interface';
 
 	let { data }: { data: PageServerData } = $props();
 
@@ -18,7 +19,7 @@
 		console.log({ content });
 	};
 
-	const onUploaded = (files: UploadedFile[]) => {
+	const onUploaded = (files: iImage[]) => {
 		console.log({ files });
 	};
 
@@ -66,7 +67,7 @@
 	<p>Loading Images</p>
 {:then result}
 	{@const images = result.data}
-	<Dropzone {onUploaded} imagekitEndpoint="/api/imagekit" initialFiles={images} />
+	<Dropzone {onUploaded} maxFiles={2} imagekitEndpoint="/api/imagekit" initialFiles={images} />
 {:catch error}
 	<h2>Unable to load images because</h2>
 	<p>{error}</p>

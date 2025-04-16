@@ -528,10 +528,12 @@
 						"interface/index",
 						"utils/index",
 						"ui/skeleton",
-						"ui/spin-loader"
+						"ui/spin-loader",
+						"ui/image-cropper"
 					],
 					"dependencies": [
-						"@toolsntuts/utils@^0.2.9"
+						"@toolsntuts/utils@^0.2.9",
+						"lucide-svelte@^0.485.0"
 					],
 					"devDependencies": [
 						"@lucide/svelte@^0.485.0",
@@ -544,7 +546,8 @@
 						"$lib/interface": "{{interface/index}}",
 						"$lib/utils": "{{utils/index}}",
 						"../skeleton": "{{ui/skeleton}}",
-						"../spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte"
+						"../spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte",
+						"../image-cropper/cropper.svelte": "{{ui/image-cropper}}/cropper.svelte"
 					}
 				},
 				{
