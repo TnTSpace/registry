@@ -4,26 +4,31 @@
 	import { Button } from "$lib/components/ui/button";
 	import { UserIcon } from "lucide-svelte";
 
+  interface Props {
+    class?: string
+  }
+
+  let { class: className }: Props = $props()
 
 </script>
 
 <ClerkLoading>
-  <Skeleton class="size-10 rounded-full" />
+  <Skeleton class={cn("size-10 rounded-full", className)} />
 </ClerkLoading>
 <ClerkLoaded>
   <SignedIn>
     <UserButton
       appearance={{
         elements: {
-          avatarBox: 'size-10'
+          avatarBox: className
         }
       }}
     />
   </SignedIn>
 
   <SignedOut>
-    <Button aria-label="User Sign In Button" href="/sign-in" class="rounded-full" variant="outline" size="icon">
-      <UserIcon class="size-4" />
+    <Button href="/sign-in" class="rounded-full" size="icon" variant="outline" aria-label="sign in">
+      <UserIcon class={cn("size-4", className)} />
     </Button>
   </SignedOut>
 </ClerkLoaded>
