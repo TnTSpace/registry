@@ -3,6 +3,7 @@
 	import Skeleton from "$lib/components/ui/skeleton/skeleton.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import { UserIcon } from "lucide-svelte";
+	import { cn } from "$lib/utils";
 
   interface Props {
     class?: string

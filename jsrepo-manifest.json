@@ -1598,7 +1598,8 @@
 					],
 					"localDependencies": [
 						"ui/skeleton",
-						"ui/button"
+						"ui/button",
+						"utils/index"
 					],
 					"dependencies": [
 						"svelte-clerk@^0.10.7",
@@ -1607,7 +1608,8 @@
 					"devDependencies": [],
 					"_imports_": {
 						"$lib/components/ui/skeleton/skeleton.svelte": "{{ui/skeleton}}/skeleton.svelte",
-						"$lib/components/ui/button": "{{ui/button}}"
+						"$lib/components/ui/button": "{{ui/button}}",
+						"$lib/utils": "{{utils/index}}"
 					}
 				},
 				{
