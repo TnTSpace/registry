@@ -401,6 +401,25 @@
 					}
 				},
 				{
+					"name": "crumb-path",
+					"directory": "src/lib/components/ui/crumb-path",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"crumb-path.svelte"
+					],
+					"localDependencies": [
+						"ui/breadcrumb"
+					],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {
+						"$lib/components/ui/breadcrumb": "{{ui/breadcrumb}}"
+					}
+				},
+				{
 					"name": "data-table",
 					"directory": "src/lib/components/ui/data-table",
 					"category": "ui",
