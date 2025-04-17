@@ -28,7 +28,6 @@
 			'https://avatars.githubusercontent.com/u/124599?v=4',
 			'id.png'
 		);
-		console.log({ file });
 	});
 </script>
 
@@ -67,7 +66,7 @@
 	<p>Loading Images</p>
 {:then result}
 	{@const images = result.data}
-	<Dropzone {onUploaded} maxFiles={2} imagekitEndpoint="/api/imagekit" initialFiles={images} />
+	<Dropzone {onUploaded} maxFiles={5} maxFileMB={10} imagekitEndpoint="/api/imagekit" initialFiles={images} accept="application/*" />
 {:catch error}
 	<h2>Unable to load images because</h2>
 	<p>{error}</p>

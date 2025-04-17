@@ -14,6 +14,7 @@ export const POST: RequestHandler = async ({ request }) => {
   const formData = await request.formData()
 
   const file = formData.get("file") as File
+  const size = formData.get("fileSize") as string
   const result = await uploadFile(file)
   const { message, status, data } = result
 
@@ -24,7 +25,8 @@ export const POST: RequestHandler = async ({ request }) => {
   console.log({ response })
   const partialImage: Partial<iImage> = {
     url: response.url,
-    fileId: response.fileId
+    fileId: response.fileId,
+    size
   }
   const addImageResult = await addImage(partialImage)
   return json(addImageResult)

@@ -69,6 +69,7 @@ export interface iMeta {
 export interface iImage extends iXata {
   url: string;
   fileId: string;
+  size: string;
 }
 
 export interface iFaq extends iXata {

@@ -1,6 +1,5 @@
 <script module lang="ts">
 	export type AcceptFileType =
-		| '*/*'
 		| 'image/*'
 		| 'video/*'
 		| 'audio/*'
@@ -21,21 +20,6 @@
 		| 'text/csv'
 		| 'video/mp4'
 		| 'audio/mpeg'
-		| '.png'
-		| '.jpg'
-		| '.jpeg'
-		| '.webp'
-		| '.gif'
-		| '.pdf'
-		| '.doc'
-		| '.docx'
-		| '.xls'
-		| '.xlsx'
-		| '.txt'
-		| '.csv'
-		| '.mp4'
-		| '.mp3'
-		| '.json';
 
 	export type UploadedFile = {
 		name: string;
@@ -54,6 +38,71 @@
 			image: async () => image
 		}));
 	}
+
+	export const fileSize = (size: number) => {
+		if (size < 1024) return `${size} B`;
+		if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} KB`;
+		return `${(size / (1024 * 1024)).toFixed(2)} MB`;
+	};
+
+	export const getFileType = (
+		filename: string
+	): 'video' | 'audio' | 'image' | 'unknown' | 'document' => {
+		const videoExtensions = ['.mp4', '.avi', '.mov', '.mkv', '.flv', '.wmv', '.webm', '.mpeg'];
+
+		const imageExtensions = [
+			'.png',
+			'.jpg',
+			'.jpeg',
+			'.webp',
+			'.gif',
+			'.bmp',
+			'.tiff',
+			'.svg',
+			'.heic'
+		];
+
+		const audioExtensions = [
+			'.mp3',
+			'.m4a',
+			'.wav',
+			'.aac',
+			'.ogg',
+			'.flac',
+			'.wma',
+			'.aiff',
+			'.alac'
+		];
+		const documentExtensions = [
+			'.pdf',
+			'.doc',
+			'.docx',
+			'.xls',
+			'.xlsx',
+			'.ppt',
+			'.pptx',
+			'.txt',
+			'.rtf',
+			'.odt',
+			'.ods',
+			'.odp',
+			'.csv',
+			'.md'
+		];
+
+		const fileExtension = filename.slice(filename.lastIndexOf('.')).toLowerCase();
+		if (videoExtensions.includes(fileExtension)) {
+			return 'video';
+		} else if (imageExtensions.includes(fileExtension)) {
+			return 'image';
+		} else if (audioExtensions.includes(fileExtension)) {
+			return 'audio';
+		} else if (documentExtensions.includes(fileExtension)) {
+			return 'document';
+		} else {
+			return 'unknown';
+		}
+	};
 </script>
 
 <script lang="ts">
@@ -68,19 +117,21 @@
 	import type { iImage } from '$lib/interface';
 	import { cn } from '$lib/utils';
 	import { XIcon } from '@lucide/svelte';
+	import Video from './Video.svelte';
+	import Audio from './Audio.svelte';
+	import Document from './Document.svelte';
 	import type { iResult } from '@toolsntuts/utils';
 	import { onDestroy, onMount } from 'svelte';
 	import { toast, Toaster } from 'svelte-sonner';
 	import { SvelteDate } from 'svelte/reactivity';
 	import { Skeleton } from '../skeleton';
 	import SpinLoader from '../spin-loader/spin-loader.svelte';
-	import { CropIcon } from 'lucide-svelte';
-	import Cropper from '../image-cropper/cropper.svelte';
 
 	interface Props {
 		class?: string;
 		onUploaded: (files: iImage[]) => void;
 		maxFiles?: number;
+		maxFileMB: number;
 		accept?: AcceptFileType;
 		imagekitEndpoint: string;
 		initialFiles?: iImage[];
@@ -92,6 +143,7 @@
 		onUploaded,
 		accept = 'image/*',
 		imagekitEndpoint,
+		maxFileMB = 2,
 		initialFiles = []
 	}: Props = $props();
 
@@ -115,6 +167,7 @@
 		const promise = async () => {
 			const formData = new FormData();
 			formData.set('file', file);
+			formData.set('fileSize', fileSize(file.size));
 
 			const options: RequestInit = {
 				method: 'post',
@@ -129,7 +182,6 @@
 			const image = data as iImage;
 
 			images = [...images, image];
-			console.log('in here');
 			onUploaded(images);
 			return image;
 		};
@@ -193,7 +245,7 @@
 	<FileDropZone
 		{onUpload}
 		{onFileRejected}
-		maxFileSize={2 * MEGABYTE}
+		maxFileSize={maxFileMB * MEGABYTE}
 		{accept}
 		{maxFiles}
 		fileCount={files.length}
@@ -216,44 +268,56 @@
 					/>
 				</div>
 			{:then image}
-			<div class="grid grid-cols-[40px_1fr_40px] gap-2 w-full overflow-hidden">
-				<!-- Left: Image Preview -->
-				<div class="relative size-10 overflow-clip">
-					<img
-						src={image.url}
-						alt={file.name}
-						class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-					/>
-				</div>
-			
-				<!-- Middle: File Info -->
-				<div class="overflow-hidden">
-					<div class="overflow-hidden overflow-ellipsis whitespace-nowrap text-sm font-medium">
-						{file.name}
-					</div>
-					{#if file.size === 0}
-						<div class="w-fit text-xs text-muted-foreground">
-							less than {displaySize(2 * MEGABYTE)}
+				<div class="grid w-full grid-cols-[40px_1fr_40px] gap-2 overflow-hidden">
+					<!-- Left: Image Preview -->
+					{#if getFileType(file.name) === 'image'}
+						<div class="relative size-10 overflow-clip">
+							<img
+								src={image.url}
+								alt={file.name}
+								class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+							/>
 						</div>
-					{:else}
-						<div class="w-fit text-xs text-muted-foreground">{displaySize(file.size)}</div>
 					{/if}
-				</div>
-			
-				<!-- Right: Delete Button -->
-				<div class="flex items-center justify-end">
-					{#if deletingId === image.xata_id}
-						<Button variant="outline" size="icon">
-							<SpinLoader class="border-primary dark:border-white" />
-						</Button>
-					{:else}
-						<Button variant="outline" size="icon" onclick={() => removeFile(file, i, image)}>
-							<XIcon />
-						</Button>
+					{#if getFileType(file.name) === 'video'}
+						<Video class="size-10" />
 					{/if}
+					{#if getFileType(file.name) === 'audio'}
+						<Audio class="size-10" />
+					{/if}
+
+					{#if getFileType(file.name) === 'document'}
+						<Document class="size-10" />
+						<!-- content here -->
+					{/if}
+
+					<!-- Middle: File Info -->
+					<div class="overflow-hidden">
+						<div class="overflow-hidden overflow-ellipsis whitespace-nowrap text-sm font-medium">
+							{file.name}
+						</div>
+						{#if file.size === 0}
+							<div class="w-fit text-xs text-muted-foreground">
+								{image.size}
+							</div>
+						{:else}
+							<div class="w-fit text-xs text-muted-foreground">{displaySize(file.size)}</div>
+						{/if}
+					</div>
+
+					<!-- Right: Delete Button -->
+					<div class="flex items-center justify-end">
+						{#if deletingId === image.xata_id}
+							<Button variant="outline" size="icon">
+								<SpinLoader class="border-primary dark:border-white" />
+							</Button>
+						{:else}
+							<Button variant="outline" size="icon" onclick={() => removeFile(file, i, image)}>
+								<XIcon />
+							</Button>
+						{/if}
+					</div>
 				</div>
-			</div>
-			
 			{:catch error}
 				<p>{error}</p>
 			{/await}
