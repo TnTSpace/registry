@@ -69,11 +69,13 @@
 						"alert-dialog-header.svelte",
 						"alert-dialog-overlay.svelte",
 						"alert-dialog-title.svelte",
+						"delete-alert-dialog.svelte",
 						"index.ts"
 					],
 					"localDependencies": [
 						"ui/button",
-						"utils/index"
+						"utils/index",
+						"ui/spin-loader"
 					],
 					"dependencies": [],
 					"devDependencies": [
@@ -81,7 +83,8 @@
 					],
 					"_imports_": {
 						"$lib/components/ui/button/index.js": "{{ui/button}}/index.js",
-						"$lib/utils": "{{utils/index}}"
+						"$lib/utils": "{{utils/index}}",
+						"$lib/components/ui/spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte"
 					}
 				},
 				{
