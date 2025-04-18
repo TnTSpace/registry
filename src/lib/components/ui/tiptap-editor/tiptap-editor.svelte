@@ -2,7 +2,7 @@
 	import { writable, type Writable } from 'svelte/store';
 	import { Editor, generateHTML } from '@tiptap/core';
 	import { onDestroy, onMount } from 'svelte';
-	import './styles/table.css';
+	import '$lib/components/ui/tiptap-editor/styles/table.css';
 
 	import Image from '@tiptap/extension-image';
 	import TextAlign from '@tiptap/extension-text-align';
