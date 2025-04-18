@@ -17,13 +17,13 @@
 		onLink,
 		onStrikeThrough,
 		onUnderline
-	} from '$lib/components/ui/tiptap-editor/utils/functions.js';
-	import type { iMedia, iSubmenu } from '$lib/components/ui/tiptap-editor/utils/types.js'; 
+	} from '$lib/utils/tiptap-functions.js';
 	import IframeDialog from '$lib/components/ui/tiptap-editor/IframeDialog.svelte'; 
 	import DropdownMenu from '$lib/components/ui/tiptap-editor/DropdownMenu.svelte';
-	import { alignment } from '$lib/components/ui/tiptap-editor/utils/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+	import type { iMedia, iSubmenu } from '$lib/utils/tiptap-types';
+	import { alignment } from './tiptap-utils';
 
 	interface Props {
 		editor: Writable<Editor>;

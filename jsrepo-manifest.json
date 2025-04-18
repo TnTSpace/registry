@@ -1577,20 +1577,40 @@
 					"subdirectory": true,
 					"list": true,
 					"files": [
+						"AddColumnAfter.svelte",
+						"AddColumnBefore.svelte",
+						"AddRowAfter.svelte",
+						"AddRowBefore.svelte",
+						"Blockquote.svelte",
 						"Display.svelte",
 						"DropdownMenu.svelte",
+						"H.svelte",
+						"H1.svelte",
+						"H2.svelte",
+						"H3.svelte",
+						"H4.svelte",
+						"H5.svelte",
+						"H6.svelte",
 						"IframeDialog.svelte",
 						"Menu.svelte",
+						"MergeCells.svelte",
 						"MoreMenu.svelte",
+						"NumberedList.svelte",
 						"Preview.svelte",
-						"tiptap-editor.svelte"
+						"SplitCell.svelte",
+						"table.css",
+						"Text.svelte",
+						"tiptap-editor.svelte",
+						"tiptap-utils.ts"
 					],
 					"localDependencies": [
-						"ui/dropdown-menu",
 						"utils/index",
+						"ui/dropdown-menu",
 						"ui/button",
+						"utils/tiptap-types",
 						"ui/dialog",
 						"ui/input",
+						"utils/tiptap-functions",
 						"ui/scroll-area"
 					],
 					"dependencies": [
@@ -1607,13 +1627,17 @@
 					],
 					"devDependencies": [],
 					"_imports_": {
-						"$lib/components/ui/dropdown-menu/index.js": "{{ui/dropdown-menu}}/index.js",
 						"$lib/utils": "{{utils/index}}",
+						"$lib/components/ui/dropdown-menu/index.js": "{{ui/dropdown-menu}}/index.js",
 						"$lib/components/ui/button": "{{ui/button}}",
+						"$lib/utils/tiptap-types": "{{utils/tiptap-types}}",
 						"$lib/components/ui/button/index.js": "{{ui/button}}/index.js",
 						"$lib/components/ui/dialog/index.js": "{{ui/dialog}}/index.js",
 						"$lib/components/ui/input/index.js": "{{ui/input}}/index.js",
-						"$lib/components/ui/scroll-area/index.js": "{{ui/scroll-area}}/index.js"
+						"$lib/utils/tiptap-functions.js": "{{utils/tiptap-functions}}.js",
+						"$lib/components/ui/scroll-area/index.js": "{{ui/scroll-area}}/index.js",
+						"$lib/utils/tiptap-functions": "{{utils/tiptap-functions}}",
+						"$lib/utils/tiptap-types.js": "{{utils/tiptap-types}}.js"
 					}
 				},
 				{
@@ -1822,7 +1846,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"box.ts"
 					],
@@ -1839,7 +1863,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"index.ts"
 					],
@@ -1850,6 +1874,93 @@
 						"clsx@^2.1.1",
 						"tailwind-merge@^3.0.2"
 					]
+				},
+				{
+					"name": "sleep",
+					"directory": "src/lib/utils",
+					"category": "utils",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"sleep.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "tiptap-custom-tablecell",
+					"directory": "src/lib/utils",
+					"category": "utils",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"tiptap-custom-tablecell.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [
+						"@tiptap/extension-table-cell@^2.11.7"
+					],
+					"devDependencies": []
+				},
+				{
+					"name": "tiptap-functions",
+					"directory": "src/lib/utils",
+					"category": "utils",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"tiptap-functions.ts"
+					],
+					"localDependencies": [
+						"utils/tiptap-types"
+					],
+					"_imports_": {
+						"$lib/utils/tiptap-types.js": "{{utils/tiptap-types}}.js"
+					},
+					"dependencies": [
+						"@tiptap/core@^2.11.7"
+					],
+					"devDependencies": []
+				},
+				{
+					"name": "tiptap-iframe",
+					"directory": "src/lib/utils",
+					"category": "utils",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"tiptap-iframe.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [
+						"@tiptap/core@^2.11.7"
+					],
+					"devDependencies": []
+				},
+				{
+					"name": "tiptap-types",
+					"directory": "src/lib/utils",
+					"category": "utils",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"tiptap-types.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [
+						"@tiptap/core@^2.11.7"
+					],
+					"devDependencies": []
 				}
 			]
 		}

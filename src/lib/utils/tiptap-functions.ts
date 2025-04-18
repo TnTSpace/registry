@@ -1,5 +1,5 @@
 import type { Editor } from "@tiptap/core";
-import type { Level } from "$lib/components/ui/tiptap-editor/utils/types.js";
+import type { Level } from "$lib/utils/tiptap-types.js";
 
 export const onParagraph = (editor: Editor) => {
   if (editor) {

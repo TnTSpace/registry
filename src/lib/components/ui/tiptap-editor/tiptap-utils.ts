@@ -1,12 +1,5 @@
 import type { Editor } from "@tiptap/core";
-import H1 from "../icons/H1.svelte";
-import H2 from "../icons/H2.svelte";
-import H3 from "../icons/H3.svelte";
-import H4 from "../icons/H4.svelte";
-import H5 from "../icons/H5.svelte";
-import H6 from "../icons/H6.svelte";
-import type { iGroup, iMenu } from "./types.js";
-import { onAddColumnAfter, onAddColumnBefore, onAddRowAfter, onAddRowBefore, onBlockquote, onBulletList, onCodeblock, onDeleteColumn, onDeleteRow, onDeleteTable, onHeadingClick, onIframe, onImage, onInsertTable, onLink, onMergeCells, onMergeOrSplit, onOrderedList, onParagraph, onSplitCell, onTextAlign } from "./functions.js";
+import { onAddColumnAfter, onAddColumnBefore, onAddRowAfter, onAddRowBefore, onBlockquote, onBulletList, onCodeblock, onDeleteColumn, onDeleteRow, onDeleteTable, onHeadingClick, onIframe, onImage, onInsertTable, onLink, onMergeCells, onMergeOrSplit, onOrderedList, onParagraph, onSplitCell, onTextAlign } from "$lib/utils/tiptap-functions"
 
 import ListIcon from 'lucide-svelte/icons/list'
 import AlignCenterVerticalIcon from 'lucide-svelte/icons/align-center-vertical'
@@ -22,16 +15,22 @@ import TrashIcon from 'lucide-svelte/icons/trash'
 import CombineIcon from 'lucide-svelte/icons/combine'
 import YoutubeIcon from 'lucide-svelte/icons/youtube'
 import Link2Icon from 'lucide-svelte/icons/link-2'
-import NumberedList from "../icons/NumberedList.svelte";
-import Text from "../icons/Text.svelte";
-import H from "../icons/H.svelte";
-import Blockquote from "../icons/Blockquote.svelte";
-import AddColumnBefore from "../icons/AddColumnBefore.svelte";
-import AddColumnAfter from "../icons/AddColumnAfter.svelte";
-import AddRowBefore from "../icons/AddRowBefore.svelte";
-import AddRowAfter from "../icons/AddRowAfter.svelte";
-import MergeCells from "../icons/MergeCells.svelte";
-import SplitCell from "../icons/SplitCell.svelte";
+import H1 from "$lib/components/ui/tiptap-editor/H1.svelte";
+import H from "$lib/components/ui/tiptap-editor/H.svelte";
+import H2 from "$lib/components/ui/tiptap-editor/H2.svelte";
+import H3 from "$lib/components/ui/tiptap-editor/H3.svelte";
+import H4 from "$lib/components/ui/tiptap-editor/H4.svelte";
+import H5 from "$lib/components/ui/tiptap-editor/H5.svelte";
+import H6 from "$lib/components/ui/tiptap-editor/H6.svelte";
+import NumberedList from "$lib/components/ui/tiptap-editor/NumberedList.svelte";
+import Blockquote from "$lib/components/ui/tiptap-editor/Blockquote.svelte";
+import AddColumnBefore from "$lib/components/ui/tiptap-editor/AddColumnBefore.svelte";
+import AddColumnAfter from "$lib/components/ui/tiptap-editor/AddColumnAfter.svelte";
+import AddRowBefore from "$lib/components/ui/tiptap-editor/AddRowBefore.svelte";
+import AddRowAfter from "$lib/components/ui/tiptap-editor/AddRowAfter.svelte";
+import MergeCells from "$lib/components/ui/tiptap-editor/MergeCells.svelte";
+import SplitCell from "$lib/components/ui/tiptap-editor/SplitCell.svelte";
+import type { iGroup, iMenu } from "$lib/utils/tiptap-types.js";
 
 export let headings: iMenu =
 {
@@ -108,7 +107,7 @@ export let lists: iMenu = {
   }
 }
 
-export const alignment: iMenu =  {
+export const alignment: iMenu = {
   name: 'Alignment',
   icon: AlignCenterVerticalIcon,
   onclick: () => { },

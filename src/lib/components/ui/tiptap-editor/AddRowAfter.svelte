@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { cn } from "$lib/utils.js";
-
+	import { cn } from '$lib/utils';
 
 	interface Props {
 		class?: string;
@@ -20,7 +19,7 @@
 >
 	<defs id="defs12" />
 	<path
-		d="m 15.666666,2.3333337 4,3.9999998 4,-3.9999998"
+		d="m 2.3333337,15.666666 3.9999998,4 -3.9999998,4"
 		id="path4"
 		style="stroke-width:2.66667"
 	/>
@@ -31,7 +30,7 @@
 		y="10.333333"
 		rx="1.3333333"
 		id="rect2"
-		transform="scale(-1,1)"
+		transform="rotate(-90)"
 		style="stroke-width:2.66667"
 	/>
 </svg>

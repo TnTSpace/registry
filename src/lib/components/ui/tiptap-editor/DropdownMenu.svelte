@@ -1,10 +1,10 @@
 <script lang="ts">
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import type { Writable } from 'svelte/store';
-	import type { iSubmenu } from '$lib/components/ui/tiptap-editor/utils/types.js';
 	import type { Editor } from '@tiptap/core';
 	import { cn } from '$lib/utils';
 	import { buttonVariants } from '$lib/components/ui/button';
+	import type { iSubmenu } from '$lib/utils/tiptap-types';
 
 	interface Props {
 		submenu: iSubmenu;
