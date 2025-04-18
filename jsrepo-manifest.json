@@ -103,8 +103,8 @@
 					],
 					"devDependencies": [],
 					"_imports_": {
-						"../alert": "{{ui/alert}}",
-						"../button": "{{ui/button}}"
+						"$lib/components/ui/alert": "{{ui/alert}}",
+						"$lib/components/ui/button": "{{ui/button}}"
 					}
 				},
 				{
@@ -1168,6 +1168,32 @@
 					],
 					"_imports_": {
 						"$lib/utils": "{{utils/index}}"
+					}
+				},
+				{
+					"name": "search-input",
+					"directory": "src/lib/components/ui/search-input",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"search-input.svelte"
+					],
+					"localDependencies": [
+						"utils/index",
+						"ui/input",
+						"ui/button"
+					],
+					"dependencies": [
+						"lucide-svelte@^0.485.0",
+						"@toolsntuts/utils@^0.2.9"
+					],
+					"devDependencies": [],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}",
+						"$lib/components/ui/input": "{{ui/input}}",
+						"$lib/components/ui/button": "{{ui/button}}"
 					}
 				},
 				{

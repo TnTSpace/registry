@@ -1,8 +1,8 @@
 <script lang="ts">
 	import InfoIcon from 'lucide-svelte/icons/info';
 	import AlertCircle from 'lucide-svelte/icons/circle-alert';
-	import { Alert, AlertDescription, AlertTitle } from '../alert';
-	import { Button } from '../button';
+	import { Alert, AlertDescription, AlertTitle } from '$lib/components/ui/alert';
+	import { Button } from '$lib/components/ui/button';
 
 	interface Props {
 		title: string;
