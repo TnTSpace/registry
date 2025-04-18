@@ -85,6 +85,56 @@
 					}
 				},
 				{
+					"name": "alert-widget",
+					"directory": "src/lib/components/ui/alert-widget",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"alert-widget.svelte"
+					],
+					"localDependencies": [
+						"ui/alert",
+						"ui/button"
+					],
+					"dependencies": [
+						"lucide-svelte@^0.485.0"
+					],
+					"devDependencies": [],
+					"_imports_": {
+						"../alert": "{{ui/alert}}",
+						"../button": "{{ui/button}}"
+					}
+				},
+				{
+					"name": "api-list",
+					"directory": "src/lib/components/ui/api-list",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"api-alert.svelte",
+						"api-list.svelte"
+					],
+					"localDependencies": [
+						"ui/alert",
+						"ui/badge",
+						"ui/button"
+					],
+					"dependencies": [
+						"lucide-svelte@^0.485.0",
+						"@toolsntuts/utils@^0.2.9"
+					],
+					"devDependencies": [],
+					"_imports_": {
+						"$lib/components/ui/alert": "{{ui/alert}}",
+						"$lib/components/ui/badge": "{{ui/badge}}",
+						"$lib/components/ui/button": "{{ui/button}}"
+					}
+				},
+				{
 					"name": "aspect-ratio",
 					"directory": "src/lib/components/ui/aspect-ratio",
 					"category": "ui",
