@@ -5,7 +5,11 @@
 		"./src/lib",
 		"./src/lib/constants",
 		"./src/lib/interface",
-		"./src/lib/fxns"
+		"./src/lib/fxns",
+		"./src/lib/components/ui/tiptap-editor/custom",
+		"./src/lib/components/ui/tiptap-editor/icons",
+		"./src/lib/components/ui/tiptap-editor/styles",
+		"./src/lib/components/ui/tiptap-editor/utils"
 	],
 	"doNotListBlocks": [],
 	"doNotListCategories": [
