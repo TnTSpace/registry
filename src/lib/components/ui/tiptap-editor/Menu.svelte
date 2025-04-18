@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MoreMenu from './MoreMenu.svelte';
+	import MoreMenu from '$lib/components/ui/tiptap-editor/MoreMenu.svelte';
 	import type { Editor } from '@tiptap/core';
 	import type { Writable } from 'svelte/store';
 	import StrikethroughIcon from 'lucide-svelte/icons/strikethrough';
@@ -17,11 +17,11 @@
 		onLink,
 		onStrikeThrough,
 		onUnderline
-	} from './utils/functions.js';
-	import type { iMedia, iSubmenu } from './utils/types.js'; 
-	import IframeDialog from './IframeDialog.svelte'; 
-	import DropdownMenu from './DropdownMenu.svelte';
-	import { alignment } from './utils/index.js';
+	} from '$lib/components/ui/tiptap-editor/utils/functions.js';
+	import type { iMedia, iSubmenu } from '$lib/components/ui/tiptap-editor/utils/types.js'; 
+	import IframeDialog from '$lib/components/ui/tiptap-editor/IframeDialog.svelte'; 
+	import DropdownMenu from '$lib/components/ui/tiptap-editor/DropdownMenu.svelte';
+	import { alignment } from '$lib/components/ui/tiptap-editor/utils/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
 

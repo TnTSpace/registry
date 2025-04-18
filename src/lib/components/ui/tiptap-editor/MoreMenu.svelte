@@ -15,7 +15,7 @@
 	import type { Snippet } from 'svelte';
 	import type { Editor } from '@tiptap/core';
 	import type { Writable } from 'svelte/store';
-	import { groups } from './utils/index.js';
+	import { groups } from '$lib/components/ui/tiptap-editor/utils/index.js';
 
 	interface Props {
 		children: Snippet;

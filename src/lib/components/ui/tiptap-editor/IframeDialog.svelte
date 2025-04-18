@@ -1,7 +1,6 @@
 <script lang="ts">
 	// @ts-ignore
 	import { ArrowRightIcon } from 'lucide-svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
 	import { buttonVariants } from '$lib/components/ui/button/index.js';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';

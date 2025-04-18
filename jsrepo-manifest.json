@@ -1610,7 +1610,6 @@
 						"$lib/components/ui/dropdown-menu/index.js": "{{ui/dropdown-menu}}/index.js",
 						"$lib/utils": "{{utils/index}}",
 						"$lib/components/ui/button": "{{ui/button}}",
-						"$lib/components/ui/button/button.svelte": "{{ui/button}}/button.svelte",
 						"$lib/components/ui/button/index.js": "{{ui/button}}/index.js",
 						"$lib/components/ui/dialog/index.js": "{{ui/dialog}}/index.js",
 						"$lib/components/ui/input/index.js": "{{ui/input}}/index.js",
