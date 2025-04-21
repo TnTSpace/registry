@@ -16,7 +16,7 @@
 		imagekitEndpoint: string;
 	}
 
-	let { image, imagekitEndpoint }: Props = $props();
+	let { image = $bindable(), imagekitEndpoint }: Props = $props();
 
 	let src = $state(image ? image.url : '');
 	let loading = $state(false);
