@@ -6,14 +6,17 @@
 		"./src/lib/constants",
 		"./src/lib/interface",
 		"./src/lib/fxns",
-		"./src/lib/utils"
+		"./src/lib/utils",
+		"./src/routes/api/imagekit"
 	],
 	"doNotListBlocks": [],
 	"doNotListCategories": [
 		"hooks",
 		"constants",
 		"interface",
-		"fxns"
+		"fxns",
+		"utils",
+		"imagekit"
 	],
 	"listBlocks": [],
 	"listCategories": [],

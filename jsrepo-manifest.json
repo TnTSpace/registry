@@ -1862,7 +1862,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": true,
+					"list": false,
 					"files": [
 						"box.ts"
 					],
@@ -1879,7 +1879,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": true,
+					"list": false,
 					"files": [
 						"file.ts"
 					],
@@ -1894,7 +1894,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": true,
+					"list": false,
 					"files": [
 						"index.ts"
 					],
@@ -1907,27 +1907,12 @@
 					]
 				},
 				{
-					"name": "sleep",
-					"directory": "src/lib/utils",
-					"category": "utils",
-					"tests": false,
-					"subdirectory": false,
-					"list": true,
-					"files": [
-						"sleep.ts"
-					],
-					"localDependencies": [],
-					"_imports_": {},
-					"dependencies": [],
-					"devDependencies": []
-				},
-				{
 					"name": "tiptap-custom-tablecell",
 					"directory": "src/lib/utils",
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": true,
+					"list": false,
 					"files": [
 						"tiptap-custom-tablecell.ts"
 					],
@@ -1944,7 +1929,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": true,
+					"list": false,
 					"files": [
 						"tiptap-functions.ts"
 					],
@@ -1965,7 +1950,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": true,
+					"list": false,
 					"files": [
 						"tiptap-iframe.ts"
 					],
@@ -1982,7 +1967,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": true,
+					"list": false,
 					"files": [
 						"tiptap-types.ts"
 					],
