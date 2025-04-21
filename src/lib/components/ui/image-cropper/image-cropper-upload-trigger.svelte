@@ -14,7 +14,7 @@
 	let { children, class: className }: WithChildren & Props = $props();
 
 	const triggerState = useImageCropperTrigger();
-	const dropzoneClasses = "border-border hover:bg-accent/25 flex max-w-[560px] w-full place-items-center justify-center rounded-lg border-2 border-dashed transition-all hover:cursor-pointer aria-disabled:opacity-50 aria-disabled:hover:cursor-not-allowed aspect-video"
+	const dropzoneClasses = "border-border hover:bg-accent/25 flex w-full place-items-center justify-center rounded-lg border-2 border-dashed transition-all hover:cursor-pointer aria-disabled:opacity-50 aria-disabled:hover:cursor-not-allowed aspect-video"
 </script>
 
 <label for={triggerState.rootState.id} class={cn("hover:cursor-pointer", dropzoneClasses, className)}>

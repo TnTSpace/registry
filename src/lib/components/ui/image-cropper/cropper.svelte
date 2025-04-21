@@ -14,9 +14,10 @@
 	interface Props {
 		image?: iImage;
 		imagekitEndpoint: string;
+		onImage: (image?: iImage) => void;
 	}
 
-	let { image = $bindable(), imagekitEndpoint }: Props = $props();
+	let { image = $bindable(), imagekitEndpoint, onImage }: Props = $props();
 
 	let src = $state(image ? image.url : '');
 	let loading = $state(false);
@@ -45,6 +46,7 @@
 			} else {
 				toast.success(message);
 				image = data as iImage;
+				onImage(image)
 			}
 		} catch (error: any) {
 			toast.error(error.message);
@@ -72,6 +74,7 @@
 			} else {
 				toast.success('Successfully deleted');
 				image = undefined
+				onImage(undefined)
 			}
 		} catch (error: any) {
 			toast.error(error.message);
