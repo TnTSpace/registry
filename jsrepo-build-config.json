@@ -31,7 +31,8 @@
 		"hooks",
 		"constants",
 		"interface",
-		"fxns"
+		"fxns",
+		"imagekit"
 	],
 	"excludeBlocks": [],
 	"excludeCategories": [],
