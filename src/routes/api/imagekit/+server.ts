@@ -19,16 +19,18 @@ export const POST: RequestHandler = async ({ request }) => {
   const { message, status, data } = result
 
   if (status === 'error') {
+    console.log(message)
     return json(result)
   }
   const response = data as UploadResponse
-  console.log({ response })
+  
   const partialImage: Partial<iImage> = {
     url: response.url,
     fileId: response.fileId,
     size
   }
   const addImageResult = await addImage(partialImage)
+  console.log(addImageResult)
   return json(addImageResult)
 };
 

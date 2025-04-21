@@ -12,11 +12,11 @@
 	import Underline from '@tiptap/extension-underline'
 	import TableRow from '@tiptap/extension-table-row';
 	import Link from '@tiptap/extension-link';
-
-	import Menu from '$lib/components/ui/tiptap-editor/Menu.svelte';
-	import Display from '$lib/components/ui/tiptap-editor/Display.svelte';
-	import { Iframe } from '$lib/components/ui/tiptap-editor/custom/iframe.js';
-	import { CustomTableCell } from '$lib/components/ui/tiptap-editor/custom/custom-tablecell.js';
+	
+	import Menu from './Menu.svelte';
+	import Display from './Display.svelte';
+	import { Iframe } from '$lib/utils/tiptap-iframe';
+	import { CustomTableCell } from '$lib/utils/tiptap-custom-tablecell';
 
 	interface Props {
 		title?: string;

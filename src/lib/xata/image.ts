@@ -60,6 +60,7 @@ export const getImages = async () => {
 
   try {
     const images = await xata.db.image
+      .sort("xata_createdat", "desc")
       .getMany({ pagination: { size: 200 } })
     return onSuccess(images)
   } catch (error: any) {

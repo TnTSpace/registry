@@ -606,7 +606,8 @@
 						"interface/index",
 						"utils/index",
 						"ui/skeleton",
-						"ui/spin-loader"
+						"ui/spin-loader",
+						"utils/file"
 					],
 					"dependencies": [
 						"@toolsntuts/utils@^0.2.9"
@@ -622,7 +623,8 @@
 						"$lib/interface": "{{interface/index}}",
 						"$lib/utils": "{{utils/index}}",
 						"../skeleton": "{{ui/skeleton}}",
-						"../spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte"
+						"../spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte",
+						"$lib/utils/file": "{{utils/file}}"
 					}
 				},
 				{
@@ -782,23 +784,33 @@
 					],
 					"localDependencies": [
 						"ui/button",
+						"interface/index",
+						"utils/file",
 						"utils/index",
+						"ui/spin-loader",
 						"ui/dialog",
 						"ui/avatar",
 						"utils/box"
 					],
 					"dependencies": [
+						"lucide-svelte@^0.485.0",
+						"@toolsntuts/utils@^0.2.9",
 						"svelte-easy-crop@^4.0.1",
 						"svelte-toolbelt@^0.7.1",
 						"runed"
 					],
 					"devDependencies": [
+						"svelte-sonner@^0.3.28",
 						"bits-ui@^1.3.14",
 						"@lucide/svelte@^0.485.0"
 					],
 					"_imports_": {
-						"../button": "{{ui/button}}",
+						"$lib/components/ui/button": "{{ui/button}}",
+						"$lib/interface": "{{interface/index}}",
+						"$lib/utils/file": "{{utils/file}}",
 						"$lib/utils": "{{utils/index}}",
+						"$lib/components/ui/spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte",
+						"../button": "{{ui/button}}",
 						"../dialog": "{{ui/dialog}}",
 						"../avatar": "{{ui/avatar}}",
 						"../../../utils/box": "{{utils/box}}"
@@ -1611,7 +1623,9 @@
 						"ui/dialog",
 						"ui/input",
 						"utils/tiptap-functions",
-						"ui/scroll-area"
+						"ui/scroll-area",
+						"utils/tiptap-iframe",
+						"utils/tiptap-custom-tablecell"
 					],
 					"dependencies": [
 						"@tiptap/core@^2.11.7",
@@ -1636,6 +1650,8 @@
 						"$lib/components/ui/input/index.js": "{{ui/input}}/index.js",
 						"$lib/utils/tiptap-functions.js": "{{utils/tiptap-functions}}.js",
 						"$lib/components/ui/scroll-area/index.js": "{{ui/scroll-area}}/index.js",
+						"$lib/utils/tiptap-iframe": "{{utils/tiptap-iframe}}",
+						"$lib/utils/tiptap-custom-tablecell": "{{utils/tiptap-custom-tablecell}}",
 						"$lib/utils/tiptap-functions": "{{utils/tiptap-functions}}",
 						"$lib/utils/tiptap-types.js": "{{utils/tiptap-types}}.js"
 					}
@@ -1855,6 +1871,21 @@
 					"dependencies": [
 						"svelte-toolbelt@^0.7.1"
 					],
+					"devDependencies": []
+				},
+				{
+					"name": "file",
+					"directory": "src/lib/utils",
+					"category": "utils",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"file.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [],
 					"devDependencies": []
 				},
 				{

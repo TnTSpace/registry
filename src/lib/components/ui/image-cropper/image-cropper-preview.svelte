@@ -14,7 +14,7 @@
 	const previewState = useImageCropperPreview();
 </script>
 
-{#if child}
+<!-- {#if child}
 	{@render child({ src: previewState.rootState.src })}
 {:else}
 	<Avatar.Root
@@ -26,4 +26,4 @@
 			<span class="sr-only">Upload image</span>
 		</Avatar.Fallback>
 	</Avatar.Root>
-{/if}
+{/if} -->

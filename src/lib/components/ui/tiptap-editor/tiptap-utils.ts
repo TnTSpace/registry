@@ -30,6 +30,7 @@ import AddRowBefore from "$lib/components/ui/tiptap-editor/AddRowBefore.svelte";
 import AddRowAfter from "$lib/components/ui/tiptap-editor/AddRowAfter.svelte";
 import MergeCells from "$lib/components/ui/tiptap-editor/MergeCells.svelte";
 import SplitCell from "$lib/components/ui/tiptap-editor/SplitCell.svelte";
+import Text from "$lib/components/ui/tiptap-editor/Text.svelte"
 import type { iGroup, iMenu } from "$lib/utils/tiptap-types.js";
 
 export let headings: iMenu =

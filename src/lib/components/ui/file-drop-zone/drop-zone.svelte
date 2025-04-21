@@ -39,12 +39,6 @@
 		}));
 	}
 
-	export const fileSize = (size: number) => {
-		if (size < 1024) return `${size} B`;
-		if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} KB`;
-		return `${(size / (1024 * 1024)).toFixed(2)} MB`;
-	};
-
 	export const getFileType = (
 		filename: string
 	): 'video' | 'audio' | 'image' | 'unknown' | 'document' => {
@@ -126,6 +120,7 @@
 	import { SvelteDate } from 'svelte/reactivity';
 	import { Skeleton } from '../skeleton';
 	import SpinLoader from '../spin-loader/spin-loader.svelte';
+	import { fileSize } from '$lib/utils/file';
 
 	interface Props {
 		class?: string;
@@ -210,7 +205,7 @@
 		};
 	});
 
-	const removeFile = async (file: UploadedFile, i: number, image: iImage) => {
+	const removeFile = async (i: number, image: iImage) => {
 		deletingId = image.xata_id;
 		const promise = async (fileId: string) => {
 			const formData = new FormData();
@@ -312,7 +307,7 @@
 								<SpinLoader class="border-primary dark:border-white" />
 							</Button>
 						{:else}
-							<Button variant="outline" size="icon" onclick={() => removeFile(file, i, image)}>
+							<Button variant="outline" size="icon" onclick={() => removeFile(i, image)}>
 								<XIcon />
 							</Button>
 						{/if}

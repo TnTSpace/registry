@@ -10,6 +10,7 @@
 	import { onMount } from 'svelte';
 	import type { PageServerData } from './$types';
 	import type { iImage } from '$lib/interface';
+	import Cropper from '$lib/components/ui/image-cropper/cropper.svelte';
 
 	let { data }: { data: PageServerData } = $props();
 
@@ -41,28 +42,17 @@
 <TelInput {country} />
 
 <!-- <TiptapEditor {getcontent} /> -->
-
-<ImageCropper.Root
-	src="https://github.com/shadcn.png"
-	onCropped={async (url) => {
-		// if you need the file for a form you can call getFileFromUrl with the cropped url
-		const file = await getFileFromUrl(url);
-		console.log(file);
-	}}
->
-	<ImageCropper.UploadTrigger>
-		<ImageCropper.Preview />
-	</ImageCropper.UploadTrigger>
-	<ImageCropper.Dialog>
-		<ImageCropper.Cropper />
-		<ImageCropper.Controls>
-			<ImageCropper.Cancel />
-			<ImageCropper.Crop />
-		</ImageCropper.Controls>
-	</ImageCropper.Dialog>
-</ImageCropper.Root>
-
 {#await data.getImages}
+	<p>Loading Images</p>
+{:then result}
+	{@const images = result.data}
+	<Cropper imagekitEndpoint="/api/imagekit" image={images[0]} />
+{:catch error}
+	<h2>Unable to load images because</h2>
+	<p>{error}</p>
+{/await}
+
+<!-- {#await data.getImages}
 	<p>Loading Images</p>
 {:then result}
 	{@const images = result.data}
@@ -70,4 +60,4 @@
 {:catch error}
 	<h2>Unable to load images because</h2>
 	<p>{error}</p>
-{/await}
+{/await} -->
