@@ -46,7 +46,7 @@
 	<p>Loading Images</p>
 {:then result}
 	{@const images = result.data}
-	<Cropper imagekitEndpoint="/api/imagekit" image={images[0]} />
+	<Cropper onImage={() => {}} imagekitEndpoint="/api/imagekit" image={images[0]} />
 {:catch error}
 	<h2>Unable to load images because</h2>
 	<p>{error}</p>
