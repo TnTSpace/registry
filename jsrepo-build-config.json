@@ -15,8 +15,7 @@
 		"constants",
 		"interface",
 		"fxns",
-		"utils",
-		"imagekit"
+		"utils"
 	],
 	"listBlocks": [],
 	"listCategories": [],
