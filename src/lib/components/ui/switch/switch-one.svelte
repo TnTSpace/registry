@@ -1,26 +1,28 @@
 <script lang="ts">
-	import { Label } from "../label";
-	import Switch from "./switch.svelte";
+	import { cn } from '$lib/utils';
+	import { Label } from '../label';
+	import Switch from './switch.svelte';
 
-  interface Props {
-    name: string;
-    description: string;
-    initialValue: boolean;
-    onSwitch: (checked: boolean) => void;
-  }
+	interface Props {
+		name: string;
+		description: string;
+		initialValue: boolean;
+		onSwitch: (checked: boolean) => void;
+		class?: string;
+	}
 
-  let { name, description, onSwitch, initialValue }: Props = $props()
+	let { name, description, onSwitch, initialValue, class: className }: Props = $props();
 
 	let checked = $state(initialValue);
 
 	const uid = $props.id();
 
-  $effect(() => onSwitch(checked));
+	$effect(() => onSwitch(checked));
+	const defaultClasses =
+		'relative flex w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/[.04] has-[[data-state=checked]]:border-ring';
 </script>
 
-<div
-	class="relative flex w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/[.04] has-[[data-state=checked]]:border-ring"
->
+<div class={cn(defaultClasses, className)}>
 	<Switch
 		id={uid}
 		bind:checked
