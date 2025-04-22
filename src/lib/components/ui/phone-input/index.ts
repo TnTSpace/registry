@@ -15,6 +15,7 @@ export type Props = {
 	country?: CountryCode | null;
 	defaultCountry?: CountryCode | null;
 	el?: HTMLInputElement;
+	onValueChange?: (phone: string) => void
 	name?: string;
 	placeholder?: string;
 	disabled?: boolean;

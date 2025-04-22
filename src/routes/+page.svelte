@@ -11,6 +11,7 @@
 	import type { PageServerData } from './$types';
 	import type { iImage } from '$lib/interface';
 	import Cropper from '$lib/components/ui/image-cropper/cropper.svelte';
+	import { removeRingClasses } from '@toolsntuts/utils';
 
 	let { data }: { data: PageServerData } = $props();
 
@@ -39,7 +40,7 @@
 />
 <TagsInput />
 <PhoneInput {country} />
-<TelInput {country} />
+<TelInput {country} class={removeRingClasses()} />
 
 <!-- <TiptapEditor {getcontent} /> -->
 {#await data.getImages}

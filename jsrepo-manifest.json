@@ -1550,16 +1550,17 @@
 						"tel-input.svelte"
 					],
 					"localDependencies": [
-						"ui/phone-input"
+						"ui/phone-input",
+						"utils/index"
 					],
 					"dependencies": [
-						"svelte-tel-input@^3.6.0",
-						"lucide-svelte@^0.485.0"
+						"svelte-tel-input@^3.6.0"
 					],
 					"devDependencies": [],
 					"_imports_": {
 						"../phone-input/country-selector.svelte": "{{ui/phone-input}}/country-selector.svelte",
-						"../phone-input": "{{ui/phone-input}}"
+						"../phone-input": "{{ui/phone-input}}",
+						"$lib/utils": "{{utils/index}}"
 					}
 				},
 				{
