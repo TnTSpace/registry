@@ -7,7 +7,7 @@
 		name: string;
 		description: string;
 		checked: boolean;
-		onSwitch: (checked: boolean) => void;
+		onSwitch?: (checked: boolean) => void;
 		class?: string;
 	}
 
@@ -15,7 +15,8 @@
 
 	const uid = $props.id();
 
-	$effect(() => onSwitch(checked));
+	$effect(() => onSwitch?.(checked));
+
 	const defaultClasses =
 		'relative flex w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/[.04] has-[[data-state=checked]]:border-ring';
 </script>
