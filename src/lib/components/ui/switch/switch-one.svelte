@@ -6,14 +6,12 @@
 	interface Props {
 		name: string;
 		description: string;
-		initialValue: boolean;
+		checked: boolean;
 		onSwitch: (checked: boolean) => void;
 		class?: string;
 	}
 
-	let { name, description, onSwitch, initialValue, class: className }: Props = $props();
-
-	let checked = $state(initialValue);
+	let { name, description, onSwitch, checked=$bindable(), class: className }: Props = $props();
 
 	const uid = $props.id();
 
