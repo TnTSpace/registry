@@ -11,11 +11,12 @@
 		class?: string;
 	}
 
-	let { name, description, onSwitch, checked=$bindable(), class: className }: Props = $props();
+	let { name, description, onSwitch, checked=$bindable(false), class: className }: Props = $props();
 
 	const uid = $props.id();
 
 	$effect(() => onSwitch?.(checked));
+
 
 	const defaultClasses =
 		'relative flex w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/[.04] has-[[data-state=checked]]:border-ring';

@@ -38,7 +38,10 @@
 
 	const countries = normalizedCountries;
 
-	$effect(() => onValueChange?.(value as string))
+	$effect(() => {
+		onValueChange?.(value as string)
+		console.log({ value })
+	})
 </script>
 
 <div class="flex rounded-lg shadow-sm shadow-black/[.04]">

@@ -12,10 +12,12 @@
 	import type { iImage } from '$lib/interface';
 	import Cropper from '$lib/components/ui/image-cropper/cropper.svelte';
 	import { removeRingClasses } from '@toolsntuts/utils';
+	import SwitchOne from '$lib/components/ui/switch/switch-one.svelte';
 
 	let { data }: { data: PageServerData } = $props();
 
 	let country = $state<CountryCode>('NG');
+	let active = $state(false);
 
 	const getcontent = (content: string) => {
 		console.log({ content });
@@ -31,6 +33,8 @@
 			'id.png'
 		);
 	});
+
+	$effect(() => console.log({ active }))
 </script>
 
 <Hero
@@ -62,3 +66,10 @@
 	<h2>Unable to load images because</h2>
 	<p>{error}</p>
 {/await} -->
+
+<SwitchOne
+	name="Active"
+	class="xl:col-span-2"
+	description="Display or hide cell"
+	bind:checked={active}
+/>
