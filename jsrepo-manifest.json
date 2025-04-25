@@ -1226,7 +1226,8 @@
 						"select-scroll-down-button.svelte",
 						"select-scroll-up-button.svelte",
 						"select-separator.svelte",
-						"select-trigger.svelte"
+						"select-trigger.svelte",
+						"select.svelte"
 					],
 					"localDependencies": [
 						"utils/index",
