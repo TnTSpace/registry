@@ -6,31 +6,31 @@
 	import { XIcon } from 'lucide-svelte';
 	import type { iResult } from '@toolsntuts/utils';
 	import { toast, Toaster } from 'svelte-sonner';
-	import type { iImage } from '$lib/interface';
+	import type { iFile } from '$lib/interface';
 	import { fileSize } from '$lib/utils/file';
 	import { cn } from '$lib/utils';
 	import SpinLoader from '$lib/components/ui/spin-loader/spin-loader.svelte';
 
 	interface Props {
-		image?: iImage;
+		file?: iFile;
 		imagekitEndpoint: string;
-		onImage: (image?: iImage) => void;
+		onFile: (file?: iFile) => void;
 	}
 
-	let { image = $bindable(), imagekitEndpoint, onImage }: Props = $props();
+	let { file = $bindable(), imagekitEndpoint, onFile }: Props = $props();
 
-	let src = $state(image ? image.url : '');
+	let src = $state(file ? file.url : '');
 	let loading = $state(false);
 
 	const onCropped = async (url: string) => {
 		// if you need the file for a form you can call getFileFromUrl with the cropped url
-		const file = await getFileFromUrl(url);
+		const obtainedFile = await getFileFromUrl(url);
 
 		try {
 			loading = true;
 			const formData = new FormData();
-			formData.set('file', file);
-			formData.set('fileSize', fileSize(file.size));
+			formData.set('file', obtainedFile);
+			formData.set('fileSize', fileSize(obtainedFile.size));
 
 			const options: RequestInit = {
 				method: 'POST',
@@ -45,8 +45,8 @@
 				toast.error(message);
 			} else {
 				toast.success(message);
-				image = data as iImage;
-				onImage(image)
+				file = data as iFile;
+				onFile(file)
 			}
 		} catch (error: any) {
 			toast.error(error.message);
@@ -73,8 +73,8 @@
 				toast.error(message);
 			} else {
 				toast.success('Successfully deleted');
-				image = undefined
-				onImage(undefined)
+				file = undefined
+				onFile(undefined)
 			}
 		} catch (error: any) {
 			toast.error(error.message);
@@ -89,10 +89,10 @@
 
 <ImageCropper.Root {src} {onCropped}>
 	<ImageCropper.UploadTrigger class={cn(loading && 'pointer-events-none')}>
-		{#if image}
+		{#if file}
 			<div class="relative">
 				<Button
-					onclick={() => removeFile((image as iImage).fileId)}
+					onclick={() => removeFile((file as iFile).fileId)}
 					variant="outline"
 					size="icon"
 					class={cn(removeImageClasses, loading && 'pointer-events-none')}
@@ -103,7 +103,7 @@
 						<XIcon />
 					{/if}
 				</Button>
-				<img src={image?.url} alt="cropped" class="aspect-video w-full rounded-lg" />
+				<img src={file?.url} alt="cropped" class="aspect-video w-full rounded-lg" />
 			</div>
 		{:else}
 			<div class="flex aspect-video flex-col place-items-center justify-center gap-2">

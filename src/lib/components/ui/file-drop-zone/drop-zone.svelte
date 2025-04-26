@@ -1,5 +1,6 @@
 <script module lang="ts">
 	export type AcceptFileType =
+		| 'image/*,video/*'
 		| 'image/*'
 		| 'video/*'
 		| 'audio/*'
@@ -19,17 +20,17 @@
 		| 'text/plain'
 		| 'text/csv'
 		| 'video/mp4'
-		| 'audio/mpeg'
+		| 'audio/mpeg';
 
 	export type UploadedFile = {
 		name: string;
 		type: string;
 		size: number;
 		uploadedAt: number;
-		image: () => Promise<iImage>;
+		image: () => Promise<iFile>;
 	};
 
-	export function imagesToUploadedFiles(initialImages: iImage[]): UploadedFile[] {
+	export function imagesToUploadedFiles(initialImages: iFile[]): UploadedFile[] {
 		return initialImages.map((image) => ({
 			name: image.url.split('/').pop() ?? 'unknown',
 			type: 'image/*', // or extract mime from URL if you have it
@@ -38,6 +39,12 @@
 			image: async () => image
 		}));
 	}
+
+	export const fileSize = (size: number) => {
+		if (size < 1024) return `${size} B`;
+		if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} KB`;
+		return `${(size / (1024 * 1024)).toFixed(2)} MB`;
+	};
 
 	export const getFileType = (
 		filename: string
@@ -108,8 +115,8 @@
 		type FileDropZoneProps
 	} from '$lib/components/ui/file-drop-zone';
 	import { Progress } from '$lib/components/ui/progress';
-	import type { iImage } from '$lib/interface';
-	import { cn } from '$lib/utils';
+	import type { iFile } from '$lib/interface/index';
+	import { cn } from '$lib/utils/index';
 	import { XIcon } from '@lucide/svelte';
 	import Video from './Video.svelte';
 	import Audio from './Audio.svelte';
@@ -118,18 +125,17 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { toast, Toaster } from 'svelte-sonner';
 	import { SvelteDate } from 'svelte/reactivity';
-	import { Skeleton } from '../skeleton';
-	import SpinLoader from '../spin-loader/spin-loader.svelte';
-	import { fileSize } from '$lib/utils/file';
+	import { Skeleton } from '$lib/components/ui/skeleton';
+	import SpinLoader from '$lib/components/ui/spin-loader/spin-loader.svelte';
 
 	interface Props {
 		class?: string;
-		onUploaded: (files: iImage[]) => void;
+		onUploaded: (files: iFile[]) => void;
 		maxFiles?: number;
 		maxFileMB: number;
 		accept?: AcceptFileType;
 		imagekitEndpoint: string;
-		initialFiles?: iImage[];
+		initialFiles?: iFile[];
 	}
 
 	let {
@@ -144,7 +150,7 @@
 
 	let files = $state<UploadedFile[]>(imagesToUploadedFiles(initialFiles));
 	let date = new SvelteDate();
-	let images: iImage[] = $state(initialFiles);
+	let images: iFile[] = $state(initialFiles);
 	let deletingId = $state('');
 
 	const onUpload: FileDropZoneProps['onUpload'] = async (files) => {
@@ -174,7 +180,7 @@
 			if (status === 'error') {
 				throw new Error(message);
 			}
-			const image = data as iImage;
+			const image = data as iFile;
 
 			images = [...images, image];
 			onUploaded(images);
@@ -205,7 +211,7 @@
 		};
 	});
 
-	const removeFile = async (i: number, image: iImage) => {
+	const removeFile = async (file: UploadedFile, i: number, image: iFile) => {
 		deletingId = image.xata_id;
 		const promise = async (fileId: string) => {
 			const formData = new FormData();
@@ -307,7 +313,7 @@
 								<SpinLoader class="border-primary dark:border-white" />
 							</Button>
 						{:else}
-							<Button variant="outline" size="icon" onclick={() => removeFile(i, image)}>
+							<Button variant="outline" size="icon" onclick={() => removeFile(file, i, image)}>
 								<XIcon />
 							</Button>
 						{/if}
@@ -319,4 +325,3 @@
 		{/each}
 	</div>
 </div>
-<Toaster position="top-center" richColors />

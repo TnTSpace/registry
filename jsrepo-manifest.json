@@ -606,8 +606,7 @@
 						"interface/index",
 						"utils/index",
 						"ui/skeleton",
-						"ui/spin-loader",
-						"utils/file"
+						"ui/spin-loader"
 					],
 					"dependencies": [
 						"@toolsntuts/utils@^0.2.9"
@@ -620,11 +619,11 @@
 					"_imports_": {
 						"$lib/components/ui/button": "{{ui/button}}",
 						"$lib/components/ui/progress": "{{ui/progress}}",
-						"$lib/interface": "{{interface/index}}",
-						"$lib/utils": "{{utils/index}}",
-						"../skeleton": "{{ui/skeleton}}",
-						"../spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte",
-						"$lib/utils/file": "{{utils/file}}"
+						"$lib/interface/index": "{{interface/index}}",
+						"$lib/utils/index": "{{utils/index}}",
+						"$lib/components/ui/skeleton": "{{ui/skeleton}}",
+						"$lib/components/ui/spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte",
+						"$lib/utils": "{{utils/index}}"
 					}
 				},
 				{
