@@ -274,8 +274,7 @@ export let groups: iGroup[] = [
       // {
       //   name: 'Image',
       //   icon: ImageIcon,
-      //   // onclick: (editor: Editor) => onImage(editor)
-      //   onclick: (editor: Editor) => {}
+      //   onclick: (editor: Editor) => onImage(editor)
       // },
       {
         name: 'Table',
@@ -355,12 +354,11 @@ export let groups: iGroup[] = [
           ]
         }
       },
-      // {
-      //   name: 'Iframe',
-      //   icon: YoutubeIcon,
-      //   // onclick: (editor: Editor) => onIframe(editor)
-      //   onclick: (editor: Editor) => {}
-      // },
+      {
+        name: 'Iframe',
+        icon: YoutubeIcon,
+        onclick: (editor: Editor) => onIframe(editor)
+      },
       {
         name: "Link",
         icon: Link2Icon,

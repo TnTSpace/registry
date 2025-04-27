@@ -20,7 +20,15 @@ export const onImage = (editor: Editor, url: string) => {
   }
 };
 
-export const onIframe = (editor: Editor, url: string) => {
+export const onIframe = (editor: Editor) => {
+  const previousUrl = editor.getAttributes('iframe').src
+  const url = window.prompt('URL', previousUrl)
+
+  // cancelled
+  if (url === null || url === '') {
+    return
+  }
+
   if (url) {
     editor.chain().focus().setIframe({ src: url }).run()
   }

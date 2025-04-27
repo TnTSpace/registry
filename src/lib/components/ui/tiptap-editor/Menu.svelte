@@ -36,10 +36,6 @@
 		onImage($editor, media.secure_url);
 	};
 
-	const getUrl = (url: string) => {
-		onIframe($editor, url);
-	};
-
 	const onDelete = () => {};
 </script>
 
@@ -68,9 +64,6 @@
 			<!-- <ImageDialog {onUpload} {onDelete} title="Upload Image">
 				<ImageIcon class="size-4" />
 			</ImageDialog> -->
-			<IframeDialog {getUrl}>
-				<YoutubeIcon class="size-4" />
-			</IframeDialog>
 			<MoreMenu {editor}>
 				<MoreHorizontalIcon class="size-4" />
 			</MoreMenu>
