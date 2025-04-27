@@ -9,10 +9,11 @@
 	import TelInput from '$lib/components/ui/tel-input/tel-input.svelte';
 	import { onMount } from 'svelte';
 	import type { PageServerData } from './$types';
-	import type { iImage } from '$lib/interface';
+	import type { iFile } from '$lib/interface';
 	import Cropper from '$lib/components/ui/image-cropper/cropper.svelte';
 	import { removeRingClasses } from '@toolsntuts/utils';
 	import SwitchOne from '$lib/components/ui/switch/switch-one.svelte';
+	import CroppieImageCropper from '$lib/components/ui/cropper/croppie-image-cropper.svelte';
 
 	let { data }: { data: PageServerData } = $props();
 
@@ -23,7 +24,7 @@
 		console.log({ content });
 	};
 
-	const onUploaded = (files: iImage[]) => {
+	const onUploaded = (files: iFile[]) => {
 		console.log({ files });
 	};
 
@@ -34,7 +35,7 @@
 		);
 	});
 
-	$effect(() => console.log({ active }))
+	$effect(() => console.log({ active }));
 </script>
 
 <Hero
@@ -46,30 +47,21 @@
 <PhoneInput {country} />
 <TelInput {country} class={removeRingClasses()} />
 
-<!-- <TiptapEditor {getcontent} /> -->
 {#await data.getImages}
 	<p>Loading Images</p>
 {:then result}
 	{@const images = result.data}
-	<Cropper onImage={() => {}} imagekitEndpoint="/api/imagekit" image={images[0]} />
+	<Cropper onFile={() => {}} imagekitEndpoint="/api/imagekit" file={images[0]} />
+
+	<CroppieImageCropper endpoint="/api/imagekit" file={images[0]} onFile={() => {}} />
 {:catch error}
 	<h2>Unable to load images because</h2>
 	<p>{error}</p>
 {/await}
 
-<!-- {#await data.getImages}
-	<p>Loading Images</p>
-{:then result}
-	{@const images = result.data}
-	<Dropzone {onUploaded} maxFiles={5} maxFileMB={10} imagekitEndpoint="/api/imagekit" initialFiles={images} accept="application/*" />
-{:catch error}
-	<h2>Unable to load images because</h2>
-	<p>{error}</p>
-{/await} -->
-
-<SwitchOne
+<!-- <SwitchOne
 	name="Active"
 	class="xl:col-span-2"
 	description="Display or hide cell"
 	bind:checked={active}
-/>
+/> -->

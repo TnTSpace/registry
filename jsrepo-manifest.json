@@ -454,6 +454,43 @@
 					}
 				},
 				{
+					"name": "cropper",
+					"directory": "src/lib/components/ui/cropper",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"cropper.css",
+						"croppie-cropper.svelte",
+						"croppie-image-cropper.svelte",
+						"use-image-upload.svelte.ts"
+					],
+					"localDependencies": [
+						"ui/button",
+						"utils/index",
+						"ui/spin-loader",
+						"interface/index",
+						"utils/file"
+					],
+					"dependencies": [
+						"croppie@^2.6.5",
+						"lucide-svelte@^0.485.0",
+						"@toolsntuts/utils@^0.2.9"
+					],
+					"devDependencies": [
+						"svelte-sonner@^0.3.28"
+					],
+					"_imports_": {
+						"$lib/components/ui/button": "{{ui/button}}",
+						"$lib/utils": "{{utils/index}}",
+						"../spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte",
+						"../button": "{{ui/button}}",
+						"$lib/interface": "{{interface/index}}",
+						"$lib/utils/file": "{{utils/file}}"
+					}
+				},
+				{
 					"name": "crumb-path",
 					"directory": "src/lib/components/ui/crumb-path",
 					"category": "ui",
