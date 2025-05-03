@@ -1560,12 +1560,16 @@
 						"table-row.svelte",
 						"table.svelte"
 					],
-					"localDependencies": [],
+					"localDependencies": [
+						"utils/index"
+					],
 					"dependencies": [],
 					"devDependencies": [
 						"bits-ui@^1.4.3"
 					],
-					"_imports_": {}
+					"_imports_": {
+						"$lib/utils/index": "{{utils/index}}"
+					}
 				},
 				{
 					"name": "tabs",
