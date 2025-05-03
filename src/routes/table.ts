@@ -1,9 +1,11 @@
 import type { ColumnDef } from "@tanstack/table-core";
 import { createRawSnippet } from 'svelte'
 import { renderComponent, renderSnippet } from '$lib/components/ui/data-table'
-import DataTableActions from "$lib/components/ui/data-table/data-table-actions.svelte";
+import DataTableActions, { type iDataTableActions } from "$lib/components/ui/data-table/data-table-actions.svelte";
 import DataTableSortButton from "$lib/components/ui/data-table/data-table-sort-button.svelte";
 import { Checkbox } from "$lib/components/ui/checkbox";
+import { onCopy } from "@toolsntuts/utils";
+import { CopyIcon, EyeIcon, PencilLineIcon, Trash2Icon } from "lucide-svelte";
 
 export type Payment = {
   id: string;
@@ -12,13 +14,38 @@ export type Payment = {
   email: string;
 }
 
+const actions: iDataTableActions[] = [
+  {
+    name: "Copy ID",
+    action: onCopy,
+    icon: CopyIcon
+  },
+  {
+    name: "View Row",
+    action: () => {},
+    icon: EyeIcon
+  },
+  {
+    name: "Edit Row",
+    className: "text-blue-500",
+    action: () => {},
+    icon: PencilLineIcon
+  },
+  {
+    name: "Delete Row",
+    className: "text-red-500",
+    action: () => {},
+    icon: Trash2Icon
+  }
+]
+
 export const columns: ColumnDef<Payment>[] = [
   {
     id: "select",
     header: ({ table }) => renderComponent(Checkbox, {
-      checked: table.getIsAllPageRowsSelected(),
-      indeterminate: table.getIsSomePageRowsSelected() && !table.getIsAllPageRowsSelected(),
-      onCheckedChange: (value) => table.toggleAllPageRowsSelected(!!value),
+      checked: table.getIsAllRowsSelected(),
+      indeterminate: table.getIsSomePageRowsSelected() && !table.getIsAllRowsSelected(),
+      onCheckedChange: (value) => table.toggleAllRowsSelected(!!value),
       'aria-label': "Select all"
     }),
     cell: ({ row }) => renderComponent(Checkbox, {
@@ -72,7 +99,7 @@ export const columns: ColumnDef<Payment>[] = [
     id: 'actions',
     header: "Actions",
     cell: ({ row }) => {
-      return renderComponent(DataTableActions, { id: row.original.id })
+      return renderComponent(DataTableActions, { id: row.original.id, actions })
     }
   }
 ]

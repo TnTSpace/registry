@@ -72,7 +72,7 @@ export const columns: ColumnDef<Payment>[] = [
     id: 'actions',
     header: "Actions",
     cell: ({ row }) => {
-      return renderComponent(DataTableActions, { id: row.original.id })
+      return renderComponent(DataTableActions, { id: row.original.id, actions: [] })
     }
   }
 ]
