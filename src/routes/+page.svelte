@@ -14,6 +14,10 @@
 	import { removeRingClasses } from '@toolsntuts/utils';
 	import SwitchOne from '$lib/components/ui/switch/switch-one.svelte';
 	import CroppieImageCropper from '$lib/components/ui/cropper/croppie-image-cropper.svelte';
+	import ResponsiveTable from '$lib/components/ui/responsive-table/responsive-table.svelte';
+	import DataTable from '$lib/components/ui/data-table/data-table.svelte';
+	import { columns, data as tableData } from './table';
+	
 
 	let { data }: { data: PageServerData } = $props();
 
@@ -47,7 +51,7 @@
 <PhoneInput {country} />
 <TelInput {country} class={removeRingClasses()} />
 
-{#await data.getImages}
+<!-- {#await data.getImages}
 	<p>Loading Images</p>
 {:then result}
 	{@const images = result.data}
@@ -57,7 +61,13 @@
 {:catch error}
 	<h2>Unable to load images because</h2>
 	<p>{error}</p>
-{/await}
+{/await} -->
+
+
+<!-- <ResponsiveTable /> -->
+
+<DataTable {columns} data={tableData} />
+
 
 <!-- <SwitchOne
 	name="Active"
