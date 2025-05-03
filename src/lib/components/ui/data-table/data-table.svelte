@@ -35,6 +35,7 @@
 	let columnVisibility = $state<VisibilityState>({});
 	let rowSelection = $state<RowSelectionState>({});
 	let rowId = $state('');
+	let bp = $state<Breakpoint>('xs');
 
 	const table = createSvelteTable({
 		get data() {
@@ -124,7 +125,7 @@
 
 	const handleResize = () => {
 		const width = window.innerWidth;
-		const bp = getBreakpoint(width);
+		bp = getBreakpoint(width);
 		hideColumns(bp);
 	};
 
@@ -173,6 +174,10 @@
 	const selectRow = (id: string) => (rowId = rowId === id ? '' : id);
 
 	const isSelected = (id: string) => id === rowId;
+
+	const columnKeys = columns.map((col) => col?.id ?? (col as Record<string, any>)['accessorKey']);
+
+  console.log({ columnKeys })
 </script>
 
 <div>
@@ -235,7 +240,6 @@
 					{@const original = row.original as Record<string, any>}
 					{@const keys = Object.keys(original as any)}
 					<Table.Row class="relative" data-state={row.getIsSelected() && 'selected'}>
-						<!-- <div variant="ghost" class="hover:bg-transparent active:bg-transparent h-full absolute w-[calc(100%-80px)] left-10" /> -->
 						{#each row.getVisibleCells() as cell, i}
 							{#if i === 0}
 								<Table.Cell class="flex items-center">
@@ -267,14 +271,29 @@
 					<tr class={cn('hidden', isSelected(row.id) && 'table-row', 'lg:hidden')}>
 						<td colspan="3">
 							{#each keys as key, i}
-								<div class="flex h-10 items-center gap-4 border-b p-2">
-									<div class="font-bold">
-										{key}
-									</div>
-									<div>
-										{original[key]}
-									</div>
-								</div>
+								{#if bp === 'xs'}
+									{#if key !== columnKeys[1]}
+										<div class="flex h-10 items-center gap-4 border-b p-2">
+											<div class="font-bold">
+												{key}
+											</div>
+											<div>
+												{original[key]}
+											</div>
+										</div>
+									{/if}
+								{:else if bp === 'sm'}
+									{#if key !== columnKeys[1] && key !== columnKeys[2]}
+										<div class="flex h-10 items-center gap-4 border-b p-2">
+											<div class="font-bold">
+												{key}
+											</div>
+											<div>
+												{original[key]}
+											</div>
+										</div>
+									{/if}
+								{/if}
 							{/each}
 						</td>
 					</tr>
