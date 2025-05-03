@@ -206,15 +206,26 @@
 			<Table.Header>
 				{#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
 					<Table.Row>
-						{#each headerGroup.headers as header (header.id)}
-							<Table.Head>
-								{#if !header.isPlaceholder}
-									<FlexRender
-										content={header.column.columnDef.header}
-										context={header.getContext()}
-									/>
-								{/if}
-							</Table.Head>
+						{#each headerGroup.headers as header, i}
+							{#if i === headerGroup.headers.length - 1}
+								<Table.Head class="justify-end text-right">
+									{#if !header.isPlaceholder}
+										<FlexRender
+											content={header.column.columnDef.header}
+											context={header.getContext()}
+										/>
+									{/if}
+								</Table.Head>
+							{:else}
+								<Table.Head>
+									{#if !header.isPlaceholder}
+										<FlexRender
+											content={header.column.columnDef.header}
+											context={header.getContext()}
+										/>
+									{/if}
+								</Table.Head>
+							{/if}
 						{/each}
 					</Table.Row>
 				{/each}
@@ -241,6 +252,10 @@
 											<ChevronRightIcon class="size-4" />
 										{/if}
 									</Button>
+								</Table.Cell>
+							{:else if i === row.getVisibleCells().length - 1}
+								<Table.Cell class="justify-end text-right">
+									<FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
 								</Table.Cell>
 							{:else}
 								<Table.Cell>
