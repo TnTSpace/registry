@@ -17,6 +17,7 @@
 	import ResponsiveTable from '$lib/components/ui/responsive-table/responsive-table.svelte';
 	import DataTable from '$lib/components/ui/data-table/data-table.svelte';
 	import { columns, data as tableData } from './table';
+	import Cart from '$lib/components/ui/ecommerce/cart.svelte';
 	
 
 	let { data }: { data: PageServerData } = $props();
@@ -75,3 +76,5 @@
 	description="Display or hide cell"
 	bind:checked={active}
 /> -->
+
+<Cart />

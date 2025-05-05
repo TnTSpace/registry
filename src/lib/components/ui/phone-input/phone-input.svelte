@@ -8,6 +8,7 @@
 	import { cn } from '$lib/utils';
 	import { TelInput, normalizedCountries } from 'svelte-tel-input';
 	import 'svelte-tel-input/styles/flags.css';
+	import { onMount } from 'svelte';
 
 	const countries = normalizedCountries;
 
@@ -35,6 +36,20 @@
 			el?.focus();
 		}, 0);
 	};
+
+	function detectPaste(input: HTMLInputElement, callback: (pastedText: string) => void) {
+		input.addEventListener('paste', (event: ClipboardEvent) => {
+			const clipboardData = event.clipboardData || (window as any).clipboardData;
+			const pastedText = clipboardData?.getData('text');
+			if (pastedText) {
+				callback(pastedText);
+			}
+		});
+	}
+
+	onMount(() => {
+		detectPaste(el as HTMLInputElement, (pastedText) => (value = pastedText));
+	});
 </script>
 
 <div class="flex place-items-center">
