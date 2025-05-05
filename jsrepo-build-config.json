@@ -14,8 +14,7 @@
 		"hooks",
 		"constants",
 		"interface",
-		"fxns",
-		"utils"
+		"fxns"
 	],
 	"listBlocks": [],
 	"listCategories": [],

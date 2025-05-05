@@ -547,9 +547,9 @@
 						"../button": "{{ui/button}}",
 						"$lib/components/ui/dropdown-menu": "{{ui/dropdown-menu}}",
 						"../checkbox": "{{ui/checkbox}}",
-						"$lib/components/ui/table": "{{ui/table}}",
+						"../table": "{{ui/table}}",
 						"../input": "{{ui/input}}",
-						"$lib/utils": "{{utils/index}}"
+						"../../../utils/index": "{{utils/index}}"
 					}
 				},
 				{
@@ -1946,7 +1946,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"box.ts"
 					],
@@ -1963,7 +1963,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"file.ts"
 					],
@@ -1973,12 +1973,35 @@
 					"devDependencies": []
 				},
 				{
+					"name": "generic",
+					"directory": "src/lib/utils",
+					"category": "utils",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"generic.ts"
+					],
+					"localDependencies": [
+						"interface/index"
+					],
+					"_imports_": {
+						"$lib/interface": "{{interface/index}}"
+					},
+					"dependencies": [
+						"esm-env"
+					],
+					"devDependencies": [
+						"svelte-sonner@^0.3.28"
+					]
+				},
+				{
 					"name": "index",
 					"directory": "src/lib/utils",
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"index.ts"
 					],
@@ -1991,12 +2014,27 @@
 					]
 				},
 				{
+					"name": "sleep",
+					"directory": "src/lib/utils",
+					"category": "utils",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"sleep.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
 					"name": "tiptap-custom-tablecell",
 					"directory": "src/lib/utils",
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"tiptap-custom-tablecell.ts"
 					],
@@ -2013,7 +2051,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"tiptap-functions.ts"
 					],
@@ -2034,7 +2072,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"tiptap-iframe.ts"
 					],
@@ -2051,7 +2089,7 @@
 					"category": "utils",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"tiptap-types.ts"
 					],

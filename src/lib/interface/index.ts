@@ -1,6 +1,15 @@
 import type { Role } from "$lib/constants"
 
 
+export type FormatToken = 'YYYY' | 'mm' | 'MMMM' | 'MMM' | 'DD' | 'dddd' | 'ddd' | 'HH' | 'hh' | 'ss' | 'a';
+
+export type StatusType = "error" | "success";
+
+export type iResult = {
+  status: StatusType;
+  message: string;
+  data?: any
+}
 
 type ModalType = "chat"
 
