@@ -523,7 +523,6 @@
 						"data-table-sort-button.svelte",
 						"data-table.svelte",
 						"data-table.svelte.ts",
-						"dt.svelte.ts",
 						"flex-render.svelte",
 						"index.ts",
 						"render-helpers.ts"
