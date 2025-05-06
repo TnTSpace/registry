@@ -643,6 +643,35 @@
 					}
 				},
 				{
+					"name": "ecommerce",
+					"directory": "src/lib/components/ui/ecommerce",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"cart.svelte"
+					],
+					"localDependencies": [
+						"ui/button",
+						"ui/card",
+						"ui/input",
+						"ui/label",
+						"ui/select"
+					],
+					"dependencies": [
+						"lucide-svelte@^0.485.0"
+					],
+					"devDependencies": [],
+					"_imports_": {
+						"../button": "{{ui/button}}",
+						"../card": "{{ui/card}}",
+						"../input": "{{ui/input}}",
+						"../label": "{{ui/label}}",
+						"$lib/components/ui/select/index.js": "{{ui/select}}/index.js"
+					}
+				},
+				{
 					"name": "file-drop-zone",
 					"directory": "src/lib/components/ui/file-drop-zone",
 					"category": "ui",
