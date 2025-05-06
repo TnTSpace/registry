@@ -123,7 +123,7 @@
 		</div>
 		<div class="flex flex-col gap-0.5 text-center">
 			<span class="font-medium text-muted-foreground">
-				Drag 'n' drop files here, or click to select files
+				Click to select file
 			</span>
 			<span class="text-sm text-muted-foreground/75">
 				<span>You can upload 1 file</span>

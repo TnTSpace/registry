@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { deleteFile, uploadFile } from '$lib/server/imagekit';
 import type { UploadResponse } from 'imagekit/dist/libs/interfaces';
-import type { iImage } from '$lib/interface';
+import type { iFile } from '$lib/interface';
 import { addImage, deleteImage } from '$lib/xata/image';
 
 export const GET: RequestHandler = async () => {
@@ -15,22 +15,21 @@ export const POST: RequestHandler = async ({ request }) => {
 
   const file = formData.get("file") as File
   const size = formData.get("fileSize") as string
+
   const result = await uploadFile(file)
   const { message, status, data } = result
 
   if (status === 'error') {
-    console.log(message)
     return json(result)
   }
   const response = data as UploadResponse
   
-  const partialImage: Partial<iImage> = {
+  const partialImage: Partial<iFile> = {
     url: response.url,
     fileId: response.fileId,
     size
   }
   const addImageResult = await addImage(partialImage)
-  console.log(addImageResult)
   return json(addImageResult)
 };
 
