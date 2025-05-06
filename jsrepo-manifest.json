@@ -683,7 +683,9 @@
 						"drop-zone.svelte",
 						"file-drop-zone.svelte",
 						"file-text-svgrepo-com.svg",
+						"image-drop-zone.svelte",
 						"index.ts",
+						"use-image-upload.svelte.ts",
 						"Video.svelte",
 						"vlc-svgrepo-com.svg"
 					],
@@ -693,10 +695,12 @@
 						"interface/index",
 						"utils/index",
 						"ui/skeleton",
-						"ui/spin-loader"
+						"ui/spin-loader",
+						"utils/file"
 					],
 					"dependencies": [
-						"@toolsntuts/utils@^0.2.9"
+						"@toolsntuts/utils@^0.2.9",
+						"lucide-svelte@^0.485.0"
 					],
 					"devDependencies": [
 						"@lucide/svelte@^0.485.0",
@@ -710,7 +714,11 @@
 						"$lib/utils/index": "{{utils/index}}",
 						"$lib/components/ui/skeleton": "{{ui/skeleton}}",
 						"$lib/components/ui/spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte",
-						"$lib/utils": "{{utils/index}}"
+						"$lib/utils": "{{utils/index}}",
+						"../button": "{{ui/button}}",
+						"../spin-loader/spin-loader.svelte": "{{ui/spin-loader}}/spin-loader.svelte",
+						"$lib/interface": "{{interface/index}}",
+						"$lib/utils/file": "{{utils/file}}"
 					}
 				},
 				{
