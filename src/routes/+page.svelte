@@ -18,7 +18,7 @@
 	import DataTable from '$lib/components/ui/data-table/data-table.svelte';
 	import { columns, data as tableData } from './table';
 	import Cart from '$lib/components/ui/ecommerce/cart.svelte';
-	
+	import ImageDropZone from '$lib/components/ui/file-drop-zone/image-drop-zone.svelte';
 
 	let { data }: { data: PageServerData } = $props();
 
@@ -41,6 +41,10 @@
 	});
 
 	$effect(() => console.log({ active }));
+
+	const onFile = (file?: iFile) => {
+		console.log({ file })
+	}
 </script>
 
 <Hero
@@ -52,23 +56,22 @@
 <PhoneInput {country} />
 <TelInput {country} class={removeRingClasses()} />
 
-<!-- {#await data.getImages}
+{#await data.getImages}
 	<p>Loading Images</p>
 {:then result}
 	{@const images = result.data}
-	<Cropper onFile={() => {}} imagekitEndpoint="/api/imagekit" file={images[0]} />
+	<!-- <Cropper onFile={() => {}} imagekitEndpoint="/api/imagekit" file={images[0]} />
 
-	<CroppieImageCropper endpoint="/api/imagekit" file={images[0]} onFile={() => {}} />
+	<CroppieImageCropper endpoint="/api/imagekit" file={images[0]} onFile={() => {}} /> -->
+	<ImageDropZone endpoint="/api/imagekit" file={images[0]} {onFile} />
 {:catch error}
 	<h2>Unable to load images because</h2>
 	<p>{error}</p>
-{/await} -->
-
+{/await}
 
 <!-- <ResponsiveTable /> -->
 
 <DataTable {columns} data={tableData} />
-
 
 <!-- <SwitchOne
 	name="Active"

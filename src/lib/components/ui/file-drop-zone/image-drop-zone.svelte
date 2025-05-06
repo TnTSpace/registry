@@ -6,7 +6,6 @@
 	import { toast } from 'svelte-sonner';
 	import type { iResult } from '@toolsntuts/utils';
 	import { cn } from '$lib/utils';
-	import { useImageUpload } from './use-image-upload.svelte';
 	import { fileSize } from '$lib/utils/file';
 
 	interface Props {
@@ -16,8 +15,6 @@
 	}
 
 	let { file = $bindable(), endpoint, onFile }: Props = $props();
-
-	const imageUpload = useImageUpload({ initialImage: '/placeholder.webp' });
 
 	let loading = $state(false);
 	let uploaded = $state(false);
