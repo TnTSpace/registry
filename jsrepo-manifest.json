@@ -520,7 +520,6 @@
 						"column.ts",
 						"data-table-actions.svelte",
 						"data-table-checkbox.svelte",
-						"data-table-email-button.svelte",
 						"data-table-sort-button.svelte",
 						"data-table.svelte",
 						"data-table.svelte.ts",
