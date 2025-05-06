@@ -1,7 +1,3 @@
-<!--
-	Installed from github/TnTSpace/registry
--->
-
 <script lang="ts" generics="TData, TValue">
 	import {
 		type ColumnDef,
