@@ -1,6 +1,201 @@
 {
 	"categories": [
 		{
+			"name": "icons",
+			"blocks": [
+				{
+					"name": "call",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"call.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "email",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"email.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "facebook",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"facebook.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "instagram",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"instagram.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "locate",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"locate.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "telegram",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"telegram.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "tiktok",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"tiktok.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "twitter",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"twitter.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "whatsapp",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"whatsapp.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
+					"name": "youtube",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"youtube.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				}
+			]
+		},
+		{
 			"name": "ui",
 			"blocks": [
 				{
@@ -735,6 +930,16 @@
 						"utils/index",
 						"ui/button",
 						"ui/wrap",
+						"icons/facebook",
+						"icons/instagram",
+						"icons/twitter",
+						"icons/tiktok",
+						"icons/telegram",
+						"icons/whatsapp",
+						"icons/youtube",
+						"icons/email",
+						"icons/call",
+						"icons/locate",
 						"fxns/index",
 						"interface/index"
 					],
@@ -745,6 +950,16 @@
 						"$lib/utils": "{{utils/index}}",
 						"$lib/components/ui/button": "{{ui/button}}",
 						"$lib/components/ui/wrap/wrap.svelte": "{{ui/wrap}}/wrap.svelte",
+						"$lib/components/icons/facebook.svelte": "{{icons/facebook}}.svelte",
+						"$lib/components/icons/instagram.svelte": "{{icons/instagram}}.svelte",
+						"$lib/components/icons/twitter.svelte": "{{icons/twitter}}.svelte",
+						"$lib/components/icons/tiktok.svelte": "{{icons/tiktok}}.svelte",
+						"$lib/components/icons/telegram.svelte": "{{icons/telegram}}.svelte",
+						"$lib/components/icons/whatsapp.svelte": "{{icons/whatsapp}}.svelte",
+						"$lib/components/icons/youtube.svelte": "{{icons/youtube}}.svelte",
+						"$lib/components/icons/email.svelte": "{{icons/email}}.svelte",
+						"$lib/components/icons/call.svelte": "{{icons/call}}.svelte",
+						"$lib/components/icons/locate.svelte": "{{icons/locate}}.svelte",
 						"$lib/fxns": "{{fxns/index}}",
 						"$lib/interface": "{{interface/index}}"
 					}
