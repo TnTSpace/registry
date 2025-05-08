@@ -102,16 +102,16 @@
 	import { cn } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button';
 	import Wrap from '$lib/components/ui/wrap/wrap.svelte';
-	import Facebook from './icons/facebook.svelte';
-	import Instagram from './icons/instagram.svelte';
-	import Twitter from './icons/twitter.svelte';
-	import Tiktok from './icons/tiktok.svelte';
-	import Telegram from './icons/telegram.svelte';
-	import Whatsapp from './icons/whatsapp.svelte';
-	import Youtube from './icons/youtube.svelte';
-	import Email from './icons/email.svelte';
-	import Call from './icons/call.svelte';
-	import Locate from './icons/locate.svelte';
+	import Facebook from '$lib/components/ui/footer/icons/facebook.svelte';
+	import Instagram from '$lib/components/ui/footer/icons/instagram.svelte';
+	import Twitter from '$lib/components/ui/footer/icons/twitter.svelte';
+	import Tiktok from '$lib/components/ui/footer/icons/tiktok.svelte';
+	import Telegram from '$lib/components/ui/footer/icons/telegram.svelte';
+	import Whatsapp from '$lib/components/ui/footer/icons/whatsapp.svelte';
+	import Youtube from '$lib/components/ui/footer/icons/youtube.svelte';
+	import Email from '$lib/components/ui/footer/icons/email.svelte';
+	import Call from '$lib/components/ui/footer/icons/call.svelte';
+	import Locate from '$lib/components/ui/footer/icons/locate.svelte';
 	import { createWhatsAppUrl } from '$lib/fxns';
 
 	interface Props {
