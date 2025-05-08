@@ -48,9 +48,17 @@
 </script>
 
 <Hero
-	type="center-content"
-	title="Raising a total kingdom child"
-	subline="We raise our children to be heavenly focused, earthly relevant and significant as the salt of the earth and the light of the world"
+	type="left-right-image"
+	badge={{
+		text: "💼 Your Career Launcher",
+		url: '/listings'
+	}}
+	title="Unlock Your Dream Job with Jordan Recruitments! 🚀"
+	subline="We go beyond resumes — connecting talent to top-tier opportunities. 💼✨ Your next big move starts now. Let's get you hired! 🌟"
+	image={{
+		src: "https://www.jordanrecruitments.com/_next/image?url=%2Frecruit2.webp&w=3840&q=75",
+		alt: "Jordan Recruitments"
+	}}
 />
 <TagsInput />
 <PhoneInput {country} />

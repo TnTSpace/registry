@@ -1033,17 +1033,20 @@
 					"list": true,
 					"files": [
 						"center-content.svelte",
-						"hero.svelte"
+						"hero.svelte",
+						"left-right-image.svelte"
 					],
 					"localDependencies": [
-						"ui/button"
+						"ui/button",
+						"ui/badge"
 					],
 					"dependencies": [
 						"lucide-svelte@^0.485.0"
 					],
 					"devDependencies": [],
 					"_imports_": {
-						"../button": "{{ui/button}}"
+						"../button": "{{ui/button}}",
+						"../badge": "{{ui/badge}}"
 					}
 				},
 				{
