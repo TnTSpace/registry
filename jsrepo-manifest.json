@@ -2136,12 +2136,16 @@
 					"category": "fxns",
 					"tests": false,
 					"subdirectory": false,
-					"list": false,
+					"list": true,
 					"files": [
 						"index.ts"
 					],
-					"localDependencies": [],
-					"_imports_": {},
+					"localDependencies": [
+						"interface/index"
+					],
+					"_imports_": {
+						"$lib/interface": "{{interface/index}}"
+					},
 					"dependencies": [],
 					"devDependencies": []
 				}

@@ -14,8 +14,7 @@
 	"doNotListCategories": [
 		"hooks",
 		"constants",
-		"interface",
-		"fxns"
+		"interface"
 	],
 	"listBlocks": [],
 	"listCategories": [],
