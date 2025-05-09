@@ -2196,6 +2196,46 @@
 			]
 		},
 		{
+			"name": "server",
+			"blocks": [
+				{
+					"name": "imagekit",
+					"directory": "src/lib/server",
+					"category": "server",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"imagekit.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [
+						"@toolsntuts/utils@^0.2.9",
+						"imagekit@^6.0.0"
+					],
+					"devDependencies": []
+				},
+				{
+					"name": "index",
+					"directory": "src/lib/server",
+					"category": "server",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"index.ts"
+					],
+					"localDependencies": [],
+					"_imports_": {},
+					"dependencies": [
+						"@toolsntuts/utils@^0.2.9"
+					],
+					"devDependencies": []
+				}
+			]
+		},
+		{
 			"name": "utils",
 			"blocks": [
 				{

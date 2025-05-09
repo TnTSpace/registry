@@ -31,7 +31,8 @@
 		"constants",
 		"interface",
 		"fxns",
-		"imagekit"
+		"imagekit",
+		"server"
 	],
 	"excludeBlocks": [],
 	"excludeCategories": [],
