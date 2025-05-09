@@ -728,7 +728,8 @@
 						"ui/dropdown-menu",
 						"ui/table",
 						"ui/input",
-						"utils/index"
+						"utils/index",
+						"fxns/index"
 					],
 					"dependencies": [
 						"@tanstack/table-core@^8.21.3",
@@ -742,7 +743,8 @@
 						"../checkbox": "{{ui/checkbox}}",
 						"../table": "{{ui/table}}",
 						"../input": "{{ui/input}}",
-						"../../../utils/index": "{{utils/index}}"
+						"../../../utils/index": "{{utils/index}}",
+						"$lib/fxns": "{{fxns/index}}"
 					}
 				},
 				{

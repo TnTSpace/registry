@@ -19,6 +19,7 @@
 	import { onMount } from 'svelte';
 	import { cn } from '../../../utils/index';
 	import { ChevronDownIcon, ChevronRightIcon, Trash2Icon } from 'lucide-svelte';
+	import { camelToNormalCase } from '$lib/fxns';
 
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
@@ -262,7 +263,7 @@
 									{#if key !== 'xata_id' && key !== 'country' && key !== ''}
 										<div class="flex h-10 items-center gap-4 border-b p-2">
 											<div class="font-bold">
-												{key}
+												{camelToNormalCase(key)}
 											</div>
 											<div>
 												{original[key]}
