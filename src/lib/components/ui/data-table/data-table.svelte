@@ -24,9 +24,10 @@
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
 		data: TData[];
+		flatten?: (data: any) => any;
 	};
 
-	let { data, columns }: DataTableProps<TData, TValue> = $props();
+	let { data, columns, flatten = (data: any[]) => data }: DataTableProps<TData, TValue> = $props();
 
 	let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 5 });
 	let sorting = $state<SortingState>([]);
@@ -231,7 +232,7 @@
 				</Table.Header>
 				<Table.Body>
 					{#each table.getRowModel().rows as row (row.id)}
-						{@const original = row.original as Record<string, any>}
+						{@const original = flatten(row.original)}
 						{@const keys = Object.keys(original as any)}
 						<Table.Row class="relative" data-state={row.getIsSelected() && 'selected'}>
 							{#each row.getVisibleCells() as cell, i}

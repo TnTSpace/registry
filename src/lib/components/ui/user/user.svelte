@@ -29,7 +29,7 @@
 
   <SignedOut>
     <Button href="/sign-in" class="rounded-full" size="icon" variant="outline" aria-label="sign in">
-      <UserIcon class={cn("size-4", className)} />
+      <UserIcon class={cn("size-10", className)} />
     </Button>
   </SignedOut>
 </ClerkLoaded>
