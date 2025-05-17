@@ -5,8 +5,8 @@
 	import CrumbPath from '../crumb-path/crumb-path.svelte';
 	import AppSidebar from './app-sidebar.svelte';
 	import NavTop from './sidebar/nav-top.svelte';
-	import NavRight from './sidebar/nav-right.svelte';
-  import { FileIcon } from 'lucide-svelte';
+	import NavRight from './sidebar/nav-right.svelte'; 
+	import ModeToggle from '../mode-toggle/mode-toggle.svelte';
 
 	interface Props {
 		children: Snippet;
@@ -29,6 +29,7 @@
 				<Sidebar.Trigger class="-ml-1" />
 				<Separator orientation="vertical" class="mr-2 h-4" />
 				<CrumbPath />
+        <ModeToggle class="ml-auto" />
 			</div>
 		</header>
 		<div class="flex flex-1 flex-col gap-4 p-4 pt-0">

@@ -806,6 +806,7 @@
 						"ui/sidebar",
 						"ui/separator",
 						"ui/crumb-path",
+						"ui/mode-toggle",
 						"interface/index"
 					],
 					"dependencies": [],
@@ -816,6 +817,7 @@
 						"$lib/components/ui/sidebar/index.js": "{{ui/sidebar}}/index.js",
 						"../separator": "{{ui/separator}}",
 						"../crumb-path/crumb-path.svelte": "{{ui/crumb-path}}/crumb-path.svelte",
+						"../mode-toggle/mode-toggle.svelte": "{{ui/mode-toggle}}/mode-toggle.svelte",
 						"$lib/interface": "{{interface/index}}"
 					}
 				},
