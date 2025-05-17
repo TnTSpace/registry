@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import type { LayoutData } from './$types';
 	import DocumentLayout from '$lib/components/ui/document-layout/document-layout.svelte';
+	import "../../app.css"
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
