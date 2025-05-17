@@ -1,5 +1,4 @@
 <script lang="ts">
-	import '../app.css';
 	import Footer from '$lib/components/ui/footer/footer.svelte';
 	import Logo from '../components/Logo.svelte';
 	import { ClerkProvider } from 'svelte-clerk';
