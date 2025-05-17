@@ -1,11 +1,7 @@
 <script lang="ts">
-	import '../app.css';
-	import Footer from '$lib/components/ui/footer/footer.svelte';
-	import Logo from './components/Logo.svelte';
-	import { ClerkProvider } from 'svelte-clerk';
-	import Header from '$lib/components/ui/header/header.svelte';
-	import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public';
-	import Wrap from '$lib/components/ui/wrap/wrap.svelte';
+	import '../app.css'; 
+	import { ClerkProvider } from 'svelte-clerk'; 
+	import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public'; 
 	import { ModeWatcher } from 'mode-watcher';
 
 	let { children } = $props();
