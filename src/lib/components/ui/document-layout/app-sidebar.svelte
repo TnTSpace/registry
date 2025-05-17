@@ -151,7 +151,7 @@
 		subline: string
 	}
 
-	let { ref = $bindable(null), Logo, ...restProps }: Props = $props();
+	let { ref = $bindable(null), Logo, title, subline, ...restProps }: Props = $props();
 </script>
 
 <Sidebar.Root bind:ref variant="inset" {...restProps}>
@@ -162,13 +162,13 @@
 					{#snippet child({ props })}
 						<a href="##" {...props}>
 							<div
-								class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
+								class="bg-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
 							>
 								<Logo class="size-4" />
 							</div>
 							<div class="grid flex-1 text-left text-sm leading-tight">
-								<span class="truncate font-semibold">Acme Inc</span>
-								<span class="truncate text-xs">Enterprise</span>
+								<span class="truncate font-semibold">{title}</span>
+								<span class="truncate text-xs">{subline}</span>
 							</div>
 						</a>
 					{/snippet}
