@@ -17,17 +17,18 @@
 	import { Button } from '../button';
 	import { Input } from '../input';
 	import { onMount } from 'svelte';
-	import { cn } from '../../../utils/index';
 	import { ChevronDownIcon, ChevronRightIcon, Trash2Icon } from 'lucide-svelte';
+	import { cn } from '$lib/utils';
 	import { camelToNormalCase } from '$lib/fxns';
 
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
 		data: TData[];
 		flatten?: (data: any) => any;
+		bulkDelete?: (selected: any[]) => void
 	};
 
-	let { data, columns, flatten = (data: any[]) => data }: DataTableProps<TData, TValue> = $props();
+	let { data, columns, flatten = (data: any[]) => data, bulkDelete }: DataTableProps<TData, TValue> = $props();
 
 	let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 5 });
 	let sorting = $state<SortingState>([]);
@@ -182,6 +183,12 @@
 	const selectRow = (id: string) => (rowId = rowId === id ? '' : id);
 
 	const isSelected = (id: string) => id === rowId;
+
+	const handleBulkDelete = () => {
+		if (selectedRows.length > 0) {
+			bulkDelete?.(selectedRows);
+		}
+	};
 </script>
 
 {#if mounted}
@@ -211,7 +218,7 @@
 												content={header.column.columnDef.header}
 												context={header.getContext()}
 											/>
-											<Button size="icon" variant="outline" disabled={selectedRows.length === 0}>
+											<Button onclick={handleBulkDelete} size="icon" variant="outline" disabled={selectedRows.length === 0}>
 												<Trash2Icon class="size-4" />
 											</Button>
 										{/if}

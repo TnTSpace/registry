@@ -8,7 +8,15 @@
 		"./src/lib/interface",
 		"./src/lib/fxns",
 		"./src/lib/utils",
-		"./src/routes/api/imagekit"
+		"./src/lib/xata",
+		"./src/routes/api/imagekit",
+		"./src/routes/(doc)",
+		"./src/routes/(doc)/components",
+		"./src/routes/(doc)/components/sidebar",
+		"./src/routes/(doc)/docs",
+		"./src/routes/(doc)/docs/[id]",
+		"./src/routes/(doc)/docs/[id]/[id]",
+		"./src/routes/(doc)/lib"
 	],
 	"doNotListBlocks": [],
 	"doNotListCategories": [
@@ -32,7 +40,13 @@
 		"interface",
 		"fxns",
 		"imagekit",
-		"server"
+		"server",
+		"components",
+		"(doc)",
+		"docs",
+		"lib",
+		"xata",
+		"[id]"
 	],
 	"excludeBlocks": [],
 	"excludeCategories": [],

@@ -81,11 +81,18 @@ export interface iFile extends iXata {
   size: string;
 }
 
-// export interface iImage extends iXata {
-//   url: string;
-//   fileId: string;
-//   size: string;
-// }
+export interface iDocumentCategory extends iXata {
+	category: string;
+	file?: string | iFile;
+	content?: string
+}
+
+export interface iDocument extends iXata {
+	title: string;
+	content: string;
+	category: string | iDocumentCategory;
+	file?: string | iFile
+}
 
 export interface iFaq extends iXata {
   category: string;
@@ -109,3 +116,6 @@ export interface iSection {
   title: string;
   content: string;
 }
+
+
+export interface iHTMLSection { id: string, title: string, content: string }

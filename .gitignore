@@ -1,4 +1,5 @@
 node_modules
+resources
 
 # Output
 .output
@@ -7,6 +8,7 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+.xata
 
 # OS
 .DS_Store
