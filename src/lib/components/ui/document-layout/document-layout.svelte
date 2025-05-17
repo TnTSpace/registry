@@ -6,16 +6,20 @@
 	import AppSidebar from './app-sidebar.svelte';
 	import NavTop from './sidebar/nav-top.svelte';
 	import NavRight from './sidebar/nav-right.svelte';
+  import { FileIcon } from 'lucide-svelte';
 
 	interface Props {
 		children: Snippet;
+    Logo: any;
+    title: string;
+    subline: string
 	}
 
-	let { children }: Props = $props();
+	let { children, Logo, title, subline }: Props = $props();
 </script>
 
 <Sidebar.Provider>
-	<AppSidebar />
+	<AppSidebar {Logo} {title} {subline} />
 	<Sidebar.Inset>
 		<NavTop />
 		<header

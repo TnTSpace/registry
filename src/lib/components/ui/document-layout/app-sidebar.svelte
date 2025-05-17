@@ -143,9 +143,15 @@
 	import NavUser from "./sidebar/nav-user.svelte";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import Command from "@lucide/svelte/icons/command";
-	import type { ComponentProps } from "svelte";
+	import type { ComponentProps, Component } from "svelte";
 
-	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
+	interface Props extends ComponentProps<typeof Sidebar.Root> {
+		Logo: any;
+		title: string;
+		subline: string
+	}
+
+	let { ref = $bindable(null), Logo, ...restProps }: Props = $props();
 </script>
 
 <Sidebar.Root bind:ref variant="inset" {...restProps}>
@@ -158,7 +164,7 @@
 							<div
 								class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
 							>
-								<Command class="size-4" />
+								<Logo class="size-4" />
 							</div>
 							<div class="grid flex-1 text-left text-sm leading-tight">
 								<span class="truncate font-semibold">Acme Inc</span>
