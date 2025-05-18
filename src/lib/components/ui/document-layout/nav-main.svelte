@@ -4,22 +4,22 @@
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
 	import { groupedDocs } from './stores';
 
-	let {
-		items
-	}: {
-		items: {
-			title: string;
-			url: string;
-			// This should be `Component` after @lucide/svelte updates types
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			icon: any;
-			isActive?: boolean;
-			items?: {
-				title: string;
-				url: string;
-			}[];
-		}[];
-	} = $props();
+	// let {
+	// 	items
+	// }: {
+	// 	items: {
+	// 		title: string;
+	// 		url: string;
+	// 		// This should be `Component` after @lucide/svelte updates types
+	// 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// 		icon: any;
+	// 		isActive?: boolean;
+	// 		items?: {
+	// 			title: string;
+	// 			url: string;
+	// 		}[];
+	// 	}[];
+	// } = $props();
 </script>
 
 <Sidebar.Group>

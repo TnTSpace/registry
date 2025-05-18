@@ -21,7 +21,7 @@
     <UserButton
       appearance={{
         elements: {
-          avatarBox: className
+					avatarBox: cn('size-10', className)
         }
       }}
     />
