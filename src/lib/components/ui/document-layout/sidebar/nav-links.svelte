@@ -1,27 +1,10 @@
-<script lang="ts">
-	import BadgeCheck from '@lucide/svelte/icons/badge-check';
-	import Bell from '@lucide/svelte/icons/bell';
-	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
-	import CreditCard from '@lucide/svelte/icons/credit-card';
-	import LogOut from '@lucide/svelte/icons/log-out';
-	import Sparkles from '@lucide/svelte/icons/sparkles';
-
-	import * as Avatar from '$lib/components/ui/avatar/index.js';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
-	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
-	import type { Snippet } from 'svelte';
-	import { HomeIcon, RssIcon, BriefcaseIcon, PhoneIcon } from 'lucide-svelte';
-	import type { iRoute } from '$lib/interface';
-
-	interface Props {
-		children: Snippet;
-	}
-	let { children }: Props = $props();
-
-	const sidebar = useSidebar();
-
-	let routes: iRoute[] = [
+<script lang="ts" module>
+	let defaultRoutes: iRoute[] = [
+		{
+			href: '/about',
+			name: 'About',
+			icon: RssIcon
+		},
 		{
 			href: '/blogs',
 			name: 'Blogs',
@@ -38,6 +21,25 @@
 			icon: PhoneIcon
 		}
 	];
+</script>
+<script lang="ts">
+	import ChevronsUpDown from '@lucide/svelte/icons/chevrons-up-down';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import { useSidebar } from '$lib/components/ui/sidebar/index.js';
+	import type { Snippet } from 'svelte';
+	import { HomeIcon, RssIcon, BriefcaseIcon, PhoneIcon } from 'lucide-svelte';
+	import type { iRoute } from '$lib/interface';
+
+	interface Props {
+		children: Snippet;
+		routes?: iRoute[]
+	}
+	let { children, routes = defaultRoutes }: Props = $props();
+
+	const sidebar = useSidebar();
+
+
 
 	const navigateToUrl = (url: string) => (location.href = url);
 </script>
