@@ -114,6 +114,25 @@
 					"devDependencies": []
 				},
 				{
+					"name": "Logo",
+					"directory": "src/lib/components/icons",
+					"category": "icons",
+					"tests": false,
+					"subdirectory": false,
+					"list": true,
+					"files": [
+						"Logo.svelte"
+					],
+					"localDependencies": [
+						"utils/index"
+					],
+					"_imports_": {
+						"$lib/utils": "{{utils/index}}"
+					},
+					"dependencies": [],
+					"devDependencies": []
+				},
+				{
 					"name": "telegram",
 					"directory": "src/lib/components/icons",
 					"category": "icons",
@@ -808,6 +827,7 @@
 						"ui/separator",
 						"ui/crumb-path",
 						"ui/mode-toggle",
+						"ui/user",
 						"fxns/index",
 						"interface/index"
 					],
@@ -820,6 +840,7 @@
 						"../separator": "{{ui/separator}}",
 						"../crumb-path/crumb-path.svelte": "{{ui/crumb-path}}/crumb-path.svelte",
 						"../mode-toggle/mode-toggle.svelte": "{{ui/mode-toggle}}/mode-toggle.svelte",
+						"../user/user.svelte": "{{ui/user}}/user.svelte",
 						"$lib/fxns": "{{fxns/index}}",
 						"$lib/interface": "{{interface/index}}"
 					}

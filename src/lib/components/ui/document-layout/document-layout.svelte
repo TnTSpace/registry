@@ -5,14 +5,15 @@
 	import CrumbPath from '../crumb-path/crumb-path.svelte';
 	import AppSidebar from './app-sidebar.svelte';
 	import NavTop from './sidebar/nav-top.svelte';
-	import NavRight from './sidebar/nav-right.svelte'; 
-	import ModeToggle from '../mode-toggle/mode-toggle.svelte'; 
+	import NavRight from './sidebar/nav-right.svelte';
+	import ModeToggle from '../mode-toggle/mode-toggle.svelte';
+	import User from '../user/user.svelte';
 
 	interface Props {
 		children: Snippet;
-    icon: any;
-    title: string;
-    subline: string
+		icon: any;
+		title: string;
+		subline: string;
 	}
 
 	let { children, icon, title, subline }: Props = $props();
@@ -25,11 +26,14 @@
 		<header
 			class="sticky top-9 z-[10] flex h-16 shrink-0 items-center gap-2 bg-background lg:top-0"
 		>
-			<div class="flex items-center gap-2 px-4 w-full">
+			<div class="flex w-full items-center gap-2 px-4">
 				<Sidebar.Trigger class="-ml-1" />
 				<Separator orientation="vertical" class="mr-2 h-4" />
 				<CrumbPath />
-        <ModeToggle class="ml-auto" />
+				<div class="ml-auto flex items-center gap-2">
+					<ModeToggle />
+					<User />
+				</div>
 			</div>
 		</header>
 		<div class="flex flex-1 flex-col gap-4 p-4 pt-0">

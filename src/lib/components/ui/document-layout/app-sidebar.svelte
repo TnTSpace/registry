@@ -135,12 +135,9 @@
 </script>
 
 <script lang="ts">
-	import NavMain from './sidebar/nav-main.svelte';
-	import NavUser from './sidebar/nav-user.svelte';
-	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import Command from '@lucide/svelte/icons/command';
-	import type { ComponentProps, Component } from 'svelte';
-	import LogoElements from '../logo-elements/logo-elements.svelte';
+	import NavMain from './sidebar/nav-main.svelte'; 
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js'; 
+	import type { ComponentProps, Component } from 'svelte'; 
 	import NavLinks from './sidebar/nav-links.svelte';
 
 	interface Props extends ComponentProps<typeof Sidebar.Root> {
@@ -170,7 +167,6 @@
 		<NavMain items={data.navMain} />
 	</Sidebar.Content>
 	<Sidebar.Footer>
-		<!-- <NavUser user={data.user} /> -->
 		<NavLinks>
 			{@render LogoIcon(icon, title, subline)}
 		</NavLinks>
