@@ -820,7 +820,6 @@
 						"app-sidebar.svelte",
 						"document-layout.svelte",
 						"document-page.svelte",
-						"index.ts",
 						"nav-links.svelte",
 						"nav-main.svelte",
 						"nav-right-items.svelte",
