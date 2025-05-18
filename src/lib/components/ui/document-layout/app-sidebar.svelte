@@ -138,8 +138,6 @@
 
 <script lang="ts">
 	import NavMain from "./sidebar/nav-main.svelte";
-	import NavProjects from "./sidebar/nav-projects.svelte";
-	import NavSecondary from "./sidebar/nav-secondary.svelte";
 	import NavUser from "./sidebar/nav-user.svelte";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import Command from "@lucide/svelte/icons/command";
@@ -162,7 +160,7 @@
 					{#snippet child({ props })}
 						<a href="##" {...props}>
 							<div
-								class="bg-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
+								class="bg-primary flex aspect-square size-8 items-center justify-center rounded-lg"
 							>
 								<Logo class="size-4" />
 							</div>
@@ -178,8 +176,6 @@
 	</Sidebar.Header>
 	<Sidebar.Content>
 		<NavMain items={data.navMain} />
-		<NavProjects projects={data.projects} />
-		<NavSecondary items={data.navSecondary} class="mt-auto" />
 	</Sidebar.Content>
 	<Sidebar.Footer>
 		<NavUser user={data.user} />

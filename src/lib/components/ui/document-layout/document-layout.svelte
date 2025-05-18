@@ -25,7 +25,7 @@
 		<header
 			class="sticky top-9 z-[10] flex h-16 shrink-0 items-center gap-2 bg-background lg:top-0"
 		>
-			<div class="flex items-center gap-2 px-4">
+			<div class="flex items-center gap-2 px-4 w-full">
 				<Sidebar.Trigger class="-ml-1" />
 				<Separator orientation="vertical" class="mr-2 h-4" />
 				<CrumbPath />

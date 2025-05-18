@@ -3,6 +3,4 @@
 
 	let { data }: { data: PageData } = $props();
 </script>
-<h2>
-	Blogs
-</h2>
+<h2>Blogs</h2>
