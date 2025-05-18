@@ -4,8 +4,8 @@
 	import { Separator } from '../separator';
 	import CrumbPath from '../crumb-path/crumb-path.svelte';
 	import AppSidebar from './app-sidebar.svelte';
-	import NavTop from './sidebar/nav-top.svelte';
-	import NavRight from './sidebar/nav-right.svelte';
+	import NavTop from './nav-top.svelte';
+	import NavRight from './nav-right.svelte';
 	import ModeToggle from '../mode-toggle/mode-toggle.svelte';
 	import User from '../user/user.svelte';
 

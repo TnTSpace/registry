@@ -6,7 +6,7 @@
 	import { stripHtmlTags } from '$lib/fxns';
 	import { cn } from '$lib/utils';
 	import { writable } from 'svelte/store';
-	import { currentHtml, htmlSectionStore } from '../stores';
+	import { currentHtml, htmlSectionStore } from './stores';
 	import { isOpen } from './nav-top.svelte';
 
 	// Function to handle smooth scrolling with 64px offset

@@ -135,10 +135,10 @@
 </script>
 
 <script lang="ts">
-	import NavMain from './sidebar/nav-main.svelte'; 
+	import NavMain from './nav-main.svelte'; 
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js'; 
 	import type { ComponentProps, Component } from 'svelte'; 
-	import NavLinks from './sidebar/nav-links.svelte';
+	import NavLinks from './nav-links.svelte';
 
 	interface Props extends ComponentProps<typeof Sidebar.Root> {
 		icon: any;
