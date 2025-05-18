@@ -1,155 +1,155 @@
 <script lang="ts" module>
-	import BookOpen from "@lucide/svelte/icons/book-open";
-	import Bot from "@lucide/svelte/icons/bot";
-	import ChartPie from "@lucide/svelte/icons/chart-pie";
-	import Frame from "@lucide/svelte/icons/frame";
-	import LifeBuoy from "@lucide/svelte/icons/life-buoy";
-	import Map from "@lucide/svelte/icons/map";
-	import Send from "@lucide/svelte/icons/send";
-	import Settings2 from "@lucide/svelte/icons/settings-2";
-	import SquareTerminal from "@lucide/svelte/icons/square-terminal";
+	import BookOpen from '@lucide/svelte/icons/book-open';
+	import Bot from '@lucide/svelte/icons/bot';
+	import ChartPie from '@lucide/svelte/icons/chart-pie';
+	import Frame from '@lucide/svelte/icons/frame';
+	import LifeBuoy from '@lucide/svelte/icons/life-buoy';
+	import Map from '@lucide/svelte/icons/map';
+	import Send from '@lucide/svelte/icons/send';
+	import Settings2 from '@lucide/svelte/icons/settings-2';
+	import SquareTerminal from '@lucide/svelte/icons/square-terminal';
 
 	const data = {
 		user: {
-			name: "shadcn",
-			email: "m@example.com",
-			avatar: "https://next.shadcn-svelte.com/avatars/shadcn.jpg",
+			name: 'shadcn',
+			email: 'm@example.com',
+			avatar: 'https://next.shadcn-svelte.com/avatars/shadcn.jpg'
 		},
 		navMain: [
 			{
-				title: "Playground",
-				url: "#",
+				title: 'Playground',
+				url: '#',
 				icon: SquareTerminal,
 				isActive: true,
 				items: [
 					{
-						title: "History",
-						url: "#",
+						title: 'History',
+						url: '#'
 					},
 					{
-						title: "Starred",
-						url: "#",
+						title: 'Starred',
+						url: '#'
 					},
 					{
-						title: "Settings",
-						url: "#",
-					},
-				],
+						title: 'Settings',
+						url: '#'
+					}
+				]
 			},
 			{
-				title: "Models",
-				url: "#",
+				title: 'Models',
+				url: '#',
 				icon: Bot,
 				items: [
 					{
-						title: "Genesis",
-						url: "#",
+						title: 'Genesis',
+						url: '#'
 					},
 					{
-						title: "Explorer",
-						url: "#",
+						title: 'Explorer',
+						url: '#'
 					},
 					{
-						title: "Quantum",
-						url: "#",
-					},
-				],
+						title: 'Quantum',
+						url: '#'
+					}
+				]
 			},
 			{
-				title: "Documentation",
-				url: "#",
+				title: 'Documentation',
+				url: '#',
 				icon: BookOpen,
 				items: [
 					{
-						title: "Introduction",
-						url: "#",
+						title: 'Introduction',
+						url: '#'
 					},
 					{
-						title: "Get Started",
-						url: "#",
+						title: 'Get Started',
+						url: '#'
 					},
 					{
-						title: "Tutorials",
-						url: "#",
+						title: 'Tutorials',
+						url: '#'
 					},
 					{
-						title: "Changelog",
-						url: "#",
-					},
-				],
+						title: 'Changelog',
+						url: '#'
+					}
+				]
 			},
 			{
-				title: "Settings",
-				url: "#",
+				title: 'Settings',
+				url: '#',
 				icon: Settings2,
 				items: [
 					{
-						title: "General",
-						url: "#",
+						title: 'General',
+						url: '#'
 					},
 					{
-						title: "Team",
-						url: "#",
+						title: 'Team',
+						url: '#'
 					},
 					{
-						title: "Billing",
-						url: "#",
+						title: 'Billing',
+						url: '#'
 					},
 					{
-						title: "Limits",
-						url: "#",
-					},
-				],
-			},
+						title: 'Limits',
+						url: '#'
+					}
+				]
+			}
 		],
 		navSecondary: [
 			{
-				title: "Support",
-				url: "#",
-				icon: LifeBuoy,
+				title: 'Support',
+				url: '#',
+				icon: LifeBuoy
 			},
 			{
-				title: "Feedback",
-				url: "#",
-				icon: Send,
-			},
+				title: 'Feedback',
+				url: '#',
+				icon: Send
+			}
 		],
 		projects: [
 			{
-				name: "Design Engineering",
-				url: "#",
-				icon: Frame,
+				name: 'Design Engineering',
+				url: '#',
+				icon: Frame
 			},
 			{
-				name: "Sales & Marketing",
-				url: "#",
-				icon: ChartPie,
+				name: 'Sales & Marketing',
+				url: '#',
+				icon: ChartPie
 			},
 			{
-				name: "Travel",
-				url: "#",
-				icon: Map,
-			},
-		],
+				name: 'Travel',
+				url: '#',
+				icon: Map
+			}
+		]
 	};
-
-
 </script>
 
 <script lang="ts">
-	import NavMain from "./sidebar/nav-main.svelte";
-	import NavUser from "./sidebar/nav-user.svelte";
-	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-	import Command from "@lucide/svelte/icons/command";
-	import type { ComponentProps, Component } from "svelte";
+	import NavMain from './sidebar/nav-main.svelte';
+	import NavUser from './sidebar/nav-user.svelte';
+	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
+	import Command from '@lucide/svelte/icons/command';
+	import type { ComponentProps, Component } from 'svelte';
+	import LogoElements from '../logo-elements/logo-elements.svelte';
+	import NavLinks from './sidebar/nav-links.svelte';
 
 	interface Props extends ComponentProps<typeof Sidebar.Root> {
-		Logo: any;
+		icon: any;
 		title: string;
-		subline: string
+		subline: string;
 	}
 
-	let { ref = $bindable(null), Logo, title, subline, ...restProps }: Props = $props();
+	let { ref = $bindable(null), icon, title, subline, ...restProps }: Props = $props();
 </script>
 
 <Sidebar.Root bind:ref variant="inset" {...restProps}>
@@ -159,15 +159,7 @@
 				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<a href="##" {...props}>
-							<div
-								class="bg-primary flex aspect-square size-8 items-center justify-center rounded-lg"
-							>
-								<Logo class="size-4" />
-							</div>
-							<div class="grid flex-1 text-left text-sm leading-tight">
-								<span class="truncate font-semibold">{title}</span>
-								<span class="truncate text-xs">{subline}</span>
-							</div>
+							{@render LogoIcon(icon, title, subline)}
 						</a>
 					{/snippet}
 				</Sidebar.MenuButton>
@@ -178,6 +170,20 @@
 		<NavMain items={data.navMain} />
 	</Sidebar.Content>
 	<Sidebar.Footer>
-		<NavUser user={data.user} />
+		<!-- <NavUser user={data.user} /> -->
+		<NavLinks>
+			{@render LogoIcon(icon, title, subline)}
+		</NavLinks>
 	</Sidebar.Footer>
 </Sidebar.Root>
+
+{#snippet LogoIcon(icon: any, title: string, subline: string)}
+	{@const Icon = icon}
+	<div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-blue-500">
+		<Icon class="size-4" />
+	</div>
+	<div class="grid flex-1 text-left text-sm leading-tight">
+		<span class="truncate font-semibold">{title}</span>
+		<span class="truncate text-xs">{subline}</span>
+	</div>
+{/snippet}

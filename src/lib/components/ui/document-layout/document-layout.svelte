@@ -6,20 +6,20 @@
 	import AppSidebar from './app-sidebar.svelte';
 	import NavTop from './sidebar/nav-top.svelte';
 	import NavRight from './sidebar/nav-right.svelte'; 
-	import ModeToggle from '../mode-toggle/mode-toggle.svelte';
+	import ModeToggle from '../mode-toggle/mode-toggle.svelte'; 
 
 	interface Props {
 		children: Snippet;
-    Logo: any;
+    icon: any;
     title: string;
     subline: string
 	}
 
-	let { children, Logo, title, subline }: Props = $props();
+	let { children, icon, title, subline }: Props = $props();
 </script>
 
 <Sidebar.Provider>
-	<AppSidebar {Logo} {title} {subline} />
+	<AppSidebar {icon} {title} {subline} />
 	<Sidebar.Inset>
 		<NavTop />
 		<header

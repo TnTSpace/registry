@@ -35,19 +35,18 @@
 				const el = document.getElementById(section.id);
 				if (el) observer.observe(el);
 			});
+		};
+		run();
 
-			run();
-
-      // Return cleanup function
-      return () => {
-        if (observer) {
-          $htmlSectionStore.forEach((section) => {
-            const el = document.getElementById(section.id);
-            if (el) observer.unobserve(el);
-          });
-          observer.disconnect();
-        }
-      }
+		// Return cleanup function
+		return () => {
+			if (observer) {
+				$htmlSectionStore.forEach((section) => {
+					const el = document.getElementById(section.id);
+					if (el) observer.unobserve(el);
+				});
+				observer.disconnect();
+			}
 		};
 	});
 </script>

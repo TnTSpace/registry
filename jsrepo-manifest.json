@@ -800,6 +800,7 @@
 					"files": [
 						"app-sidebar.svelte",
 						"document-layout.svelte",
+						"document-page.svelte",
 						"stores.ts"
 					],
 					"localDependencies": [
@@ -807,6 +808,7 @@
 						"ui/separator",
 						"ui/crumb-path",
 						"ui/mode-toggle",
+						"fxns/index",
 						"interface/index"
 					],
 					"dependencies": [],
@@ -818,6 +820,7 @@
 						"../separator": "{{ui/separator}}",
 						"../crumb-path/crumb-path.svelte": "{{ui/crumb-path}}/crumb-path.svelte",
 						"../mode-toggle/mode-toggle.svelte": "{{ui/mode-toggle}}/mode-toggle.svelte",
+						"$lib/fxns": "{{fxns/index}}",
 						"$lib/interface": "{{interface/index}}"
 					}
 				},

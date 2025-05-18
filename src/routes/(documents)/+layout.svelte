@@ -6,6 +6,7 @@
 	import { groupedDocs } from '$lib/components/ui/document-layout/stores';
 	import type { iResult } from '@toolsntuts/utils';
 	import type { iDocument } from '$lib/interface';
+	import Logo from '$lib/components/icons/Logo.svelte';
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 
@@ -18,6 +19,6 @@
 	});
 </script>
 
-<DocumentLayout Logo={FileIcon} title="Jordan" subline="Recruitments">
+<DocumentLayout icon={Logo} title="Jordan" subline="Recruitments">
 	{@render children()}
 </DocumentLayout>
