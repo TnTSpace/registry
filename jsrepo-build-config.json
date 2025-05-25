@@ -2,12 +2,7 @@
 	"$schema": "https://unpkg.com/jsrepo@1.45.1/schemas/registry-config.json",
 	"dirs": [
 		"./src/lib/components",
-		"./src/lib/components",
 		"./src/lib",
-		"./src/lib/constants",
-		"./src/lib/interface",
-		"./src/lib/fxns",
-		"./src/lib/utils",
 		"./src/lib/xata",
 		"./src/routes/api/imagekit"
 	],

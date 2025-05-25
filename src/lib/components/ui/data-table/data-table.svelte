@@ -17,18 +17,29 @@
 	import { Button } from '../button';
 	import { Input } from '../input';
 	import { onMount } from 'svelte';
-	import { ChevronDownIcon, ChevronRightIcon, Trash2Icon } from 'lucide-svelte';
-	import { cn } from '$lib/utils';
-	import { camelToNormalCase } from '$lib/fxns';
+	import { ChevronDownIcon, ChevronRightIcon, PlusIcon, Trash2Icon } from 'lucide-svelte';
+	import { cn } from '../../../utils/index';
+	import { camelToNormalCase } from '../../../fxns/index';
 
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
 		data: TData[];
+		filteredRows?: TData[];
+		selectedRows?: TData[];
+		shouldSelectRow?: boolean;
 		flatten?: (data: any) => any;
-		bulkDelete?: (selected: any[]) => void
+		ondelete?: (selected: any[]) => void;
 	};
 
-	let { data, columns, flatten = (data: any[]) => data, bulkDelete }: DataTableProps<TData, TValue> = $props();
+	let {
+		data = $bindable([]),
+		selectedRows = $bindable([]),
+		filteredRows = $bindable([]),
+		shouldSelectRow = $bindable(false),
+		columns,
+		flatten = (data: any[]) => data,
+		ondelete
+	}: DataTableProps<TData, TValue> = $props();
 
 	let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 5 });
 	let sorting = $state<SortingState>([]);
@@ -37,10 +48,9 @@
 	let rowSelection = $state<RowSelectionState>({});
 	let rowId = $state('');
 	let bp = $state<Breakpoint>('xs');
-	let selectedRows = $state<TData[]>([]);
 	let mounted = $state(false);
 
-	// const columnKeys = columns.map((col) => col?.id ?? (col as Record<string, any>)['accessorKey']);
+	filteredRows = [...data];
 
 	const firstData = (data as any[])[0];
 	const columnKeys = firstData ? Object.keys(firstData) : [];
@@ -56,10 +66,10 @@
 		getFilteredRowModel: getFilteredRowModel(),
 		globalFilterFn: (row, columnId, filterValue) => {
 			const search = filterValue?.toLowerCase?.() ?? '';
+			console.log({ search });
 			return columnKeys.some((key) => {
 				const value = (row.original as Record<string, unknown>)[key];
 				const condition = value?.toString?.().toLowerCase?.().includes(search);
-
 				return condition;
 			});
 		},
@@ -79,6 +89,7 @@
 		},
 		onGlobalFilterChange: (updater) => {
 			globalFilter = typeof updater === 'function' ? updater(globalFilter) : updater;
+			filteredRows = table.getFilteredRowModel().rows.map((row) => row.original);
 		},
 		onColumnVisibilityChange: (updater) => {
 			columnVisibility = typeof updater === 'function' ? updater(columnVisibility) : updater;
@@ -145,7 +156,7 @@
 		const total = columns.length;
 
 		// Always show first, second, and last columns
-		const baseVisibleIndices = [0, 1, total - 1];
+		const baseVisibleIndices = [0, 1, total - 3, total - 2, total - 1];
 
 		// Breakpoint-based progressive reveals (up to total - 2 to avoid last column duplication)
 		const progressiveReveals = {
@@ -184,17 +195,29 @@
 
 	const isSelected = (id: string) => id === rowId;
 
-	const handleBulkDelete = () => {
-		if (selectedRows.length > 0) {
-			bulkDelete?.(selectedRows);
-		}
+	const handleDeleteProducts = async () => {
+		ondelete?.(selectedRows);
+		selectedRows = [];
+		table.toggleAllRowsSelected(false);
 	};
 </script>
 
 {#if mounted}
 	<div>
-		<div class="flex items-center gap-4 py-4">
-			<Input placeholder="Filter columns..." {oninput} {onchange} />
+		<div class="grid grid-cols-1 md:grid-cols-2 items-center  gap-4 py-4">
+			<div class="flex items-center gap-2">
+				<Button variant="outline" class="rounded-full">
+					<PlusIcon class="size-4" />
+					<span>Add</span>
+				</Button>
+				{#if selectedRows.length}
+					<Button variant="outline" class="rounded-full" onclick={handleDeleteProducts}>
+						<Trash2Icon class="size-4" />
+						<span>Delete</span>
+					</Button>
+				{/if}
+			</div>
+			<Input placeholder="Filter columns..." {oninput} {onchange} class="md:ml-auto max-w-80" />
 		</div>
 		<div class="rounded-md border">
 			<Table.Root>
@@ -212,15 +235,14 @@
 										{/if}
 									</Table.Head>
 								{:else if i === 0}
-									<Table.Head class="grid grid-cols-[40px_40px] items-center gap-1">
+									<Table.Head class="items-center gap-1">
 										{#if !header.isPlaceholder}
-											<FlexRender
-												content={header.column.columnDef.header}
-												context={header.getContext()}
-											/>
-											<Button onclick={handleBulkDelete} size="icon" variant="outline" disabled={selectedRows.length === 0}>
-												<Trash2Icon class="size-4" />
-											</Button>
+											<div class="flex size-10 items-center justify-center">
+												<FlexRender
+													content={header.column.columnDef.header}
+													context={header.getContext()}
+												/>
+											</div>
 										{/if}
 									</Table.Head>
 								{:else}
@@ -241,18 +263,23 @@
 					{#each table.getRowModel().rows as row (row.id)}
 						{@const original = flatten(row.original)}
 						{@const keys = Object.keys(original as any)}
-						<Table.Row class="relative" data-state={row.getIsSelected() && 'selected'}>
+						<Table.Row class="relative align-middle" data-state={row.getIsSelected() && 'selected'}>
 							{#each row.getVisibleCells() as cell, i}
 								{#if i === 0}
-									<Table.Cell class="flex items-center">
-										<FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
-										<Button size="icon" variant="ghost" onclick={() => selectRow(row.id)}>
-											{#if isSelected(row.id)}
-												<ChevronDownIcon class="size-4" />
-											{:else}
-												<ChevronRightIcon class="size-4" />
-											{/if}
-										</Button>
+									<Table.Cell class="w-10">
+										<div class="flex size-full flex-col items-center gap-2">
+											<FlexRender
+												content={cell.column.columnDef.cell}
+												context={cell.getContext()}
+											/>
+											<Button size="icon" variant="ghost" onclick={() => selectRow(row.id)}>
+												{#if isSelected(row.id)}
+													<ChevronDownIcon class="size-4" />
+												{:else}
+													<ChevronRightIcon class="size-4" />
+												{/if}
+											</Button>
+										</div>
 									</Table.Cell>
 								{:else if i === row.getVisibleCells().length - 1}
 									<Table.Cell class="justify-end text-right">
@@ -266,14 +293,14 @@
 							{/each}
 						</Table.Row>
 						<tr class={cn('hidden', isSelected(row.id) && 'table-row')}>
-							<td colspan="3">
+							<td colspan="4">
 								{#each keys as key, i}
 									{#if key !== 'xata_id' && key !== 'country' && key !== ''}
 										<div class="flex h-10 items-center gap-4 border-b p-2">
-											<div class="font-bold">
+											<div class="whitespace-nowrap font-bold">
 												{camelToNormalCase(key)}
 											</div>
-											<div>
+											<div class="line-clamp-1">
 												{original[key]}
 											</div>
 										</div>

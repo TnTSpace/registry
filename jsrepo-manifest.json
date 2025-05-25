@@ -777,8 +777,8 @@
 						"../checkbox": "{{ui/checkbox}}",
 						"../table": "{{ui/table}}",
 						"../input": "{{ui/input}}",
-						"$lib/utils": "{{utils/index}}",
-						"$lib/fxns": "{{fxns/index}}"
+						"../../../utils/index": "{{utils/index}}",
+						"../../../fxns/index": "{{fxns/index}}"
 					}
 				},
 				{
@@ -1088,6 +1088,21 @@
 						"$lib/utils": "{{utils/index}}",
 						"$lib/components/ui/label/index.js": "{{ui/label}}/index.js"
 					}
+				},
+				{
+					"name": "github-editor",
+					"directory": "src/lib/components/ui/github-editor",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"github-editor.svelte"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
 				},
 				{
 					"name": "header",
