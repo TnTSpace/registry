@@ -20,6 +20,7 @@
 	import { ChevronDownIcon, ChevronRightIcon, PlusIcon, Trash2Icon } from 'lucide-svelte';
 	import { cn } from '../../../utils/index';
 	import { camelToNormalCase } from '../../../fxns/index';
+	import { removeRingClasses } from '@toolsntuts/utils';
 
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
@@ -204,7 +205,7 @@
 
 {#if mounted}
 	<div>
-		<div class="grid grid-cols-1 md:grid-cols-2 items-center  gap-4 py-4">
+		<div class="grid grid-cols-1 items-center gap-4 py-4 md:grid-cols-2">
 			<div class="flex items-center gap-2">
 				<Button variant="outline" class="rounded-full">
 					<PlusIcon class="size-4" />
@@ -217,7 +218,12 @@
 					</Button>
 				{/if}
 			</div>
-			<Input placeholder="Filter columns..." {oninput} {onchange} class="md:ml-auto max-w-80" />
+			<Input
+				placeholder="Filter columns..."
+				{oninput}
+				{onchange}
+				class={cn('max-w-80 md:ml-auto', removeRingClasses())}
+			/>
 		</div>
 		<div class="rounded-md border">
 			<Table.Root>
