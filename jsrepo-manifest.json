@@ -767,7 +767,8 @@
 					],
 					"dependencies": [
 						"@tanstack/table-core@^8.21.3",
-						"lucide-svelte@^0.485.0"
+						"lucide-svelte@^0.485.0",
+						"@toolsntuts/utils@^0.2.9"
 					],
 					"devDependencies": [],
 					"_imports_": {

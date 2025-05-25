@@ -205,7 +205,7 @@
 
 {#if mounted}
 	<div>
-		<div class="grid grid-cols-1 items-center gap-4 py-4 md:grid-cols-2">
+		<div class="grid grid-cols-1 md:grid-cols-2 items-center  gap-4 py-4">
 			<div class="flex items-center gap-2">
 				<Button variant="outline" class="rounded-full">
 					<PlusIcon class="size-4" />
@@ -218,12 +218,7 @@
 					</Button>
 				{/if}
 			</div>
-			<Input
-				placeholder="Filter columns..."
-				{oninput}
-				{onchange}
-				class={cn('max-w-80 md:ml-auto', removeRingClasses())}
-			/>
+			<Input placeholder="Filter columns..." {oninput} {onchange} class={cn("md:ml-auto max-w-80", removeRingClasses())} />
 		</div>
 		<div class="rounded-md border">
 			<Table.Root>
