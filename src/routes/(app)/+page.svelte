@@ -19,15 +19,15 @@
 	import { columns, data as tableData } from './table';
 	import Cart from '$lib/components/ui/ecommerce/cart.svelte';
 	import ImageDropZone from '$lib/components/ui/file-drop-zone/image-drop-zone.svelte';
+	import TiptapEditor from '$lib/components/ui/tiptap-editor/tiptap-editor.svelte';
+	import GithubEditor from '$lib/components/ui/github-editor/github-editor.svelte';
+	import type { iPresentation } from '$lib/components/ui/reveal/types';
+	import Reveal from '$lib/components/ui/reveal/reveal.svelte';
 
 	let { data }: { data: PageServerData } = $props();
 
 	let country = $state<CountryCode>('NG');
 	let active = $state(false);
-
-	const getcontent = (content: string) => {
-		console.log({ content });
-	};
 
 	const onUploaded = (files: iFile[]) => {
 		console.log({ files });
@@ -43,23 +43,57 @@
 	$effect(() => console.log({ active }));
 
 	const onFile = (file?: iFile) => {
-		console.log({ file })
-	}
+		console.log({ file });
+	};
+
+	const getcontent = (content: string) => {
+		console.log({ content });
+	};
+
+	const presentations: iPresentation[] = [
+		{
+			id: "1",
+			active: true,
+			date: "2023-12-28T12:24:23.913",
+			order: 1,
+			name: "RCN Lagos",
+			subline: "Remnant Christian Network Lagos",
+			image: "https://www.rcnlagos.org/images/uploads/rcnlagos.webp",
+			type: "Generic",
+			url: "https://www.rcnlagos.org/about/the-birth-of-rcn-lagos",
+			cta: "rcn lagos",
+			videourl: ""
+		},
+		{
+			id: "2",
+			active: true,
+			date: "2023-12-28T12:25:52.184",
+			order: 2,
+			name: "Prayer Cells",
+			subline: "Lagos must pray",
+			image: "https://www.rcnlagos.org/images/uploads/prayercells.webp",
+			type: "Generic",
+			url: "https://www.rcnlagos.org/prayercells",
+			cta: "prayercells",
+			videourl: ""
+		}
+	]
 </script>
 
 <Hero
 	type="left-right-image"
 	badge={{
-		text: "💼 Your Career Launcher",
+		text: '💼 Your Career Launcher',
 		url: '/listings'
 	}}
 	title="Unlock Your Dream Job with Jordan Recruitments! 🚀"
 	subline="We go beyond resumes — connecting talent to top-tier opportunities. 💼✨ Your next big move starts now. Let's get you hired! 🌟"
 	image={{
-		src: "https://www.jordanrecruitments.com/_next/image?url=%2Frecruit2.webp&w=3840&q=75",
-		alt: "Jordan Recruitments"
+		src: 'https://www.jordanrecruitments.com/_next/image?url=%2Frecruit2.webp&w=3840&q=75',
+		alt: 'Jordan Recruitments'
 	}}
 />
+<Reveal {presentations} />
 <TagsInput />
 <PhoneInput {country} />
 <TelInput {country} class={removeRingClasses()} />
@@ -89,3 +123,7 @@
 /> -->
 
 <Cart />
+
+<!-- <TiptapEditor title="" content="" {getcontent} /> -->
+
+<GithubEditor />

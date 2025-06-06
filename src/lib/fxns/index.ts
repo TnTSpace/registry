@@ -158,12 +158,37 @@ export function slugify(text: string): string {
 }
 
 export function extractHeadingTagsOnly(htmlArray: string[]): string[] {
-	return htmlArray.filter((html) => /^<h[1-6]\b[^>]*>.*<\/h[1-6]>$/i.test(html.trim()));
+  return htmlArray.filter((html) => /^<h[1-6]\b[^>]*>.*<\/h[1-6]>$/i.test(html.trim()));
 }
 export function stripHtmlTags(html: string): string {
-	const tempEl = document.createElement('div');
-	tempEl.innerHTML = html;
-	return tempEl.textContent?.trim() || '';
+  const tempEl = document.createElement('div');
+  tempEl.innerHTML = html;
+  return tempEl.textContent?.trim() || '';
 }
 
 
+export const convertArrayOfObjectsToCSV = (data: Record<string, any>[]) => {
+  const separator = ','
+  const keys = Object.keys(data[0])
+
+  const csvContent =
+    keys.join(separator) +
+    '\n' +
+    data.map(row => {
+      return keys.map(key => {
+        return '"' + (row[key] || '') + '"';
+      }).join(separator);
+    }).join('\n');
+
+  return 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+}
+
+export const downloadCSV = (data: Record<string, any>[], filename: string) => {
+  const csvData = convertArrayOfObjectsToCSV(data)
+  const link = document.createElement('a')
+  link.setAttribute('href', csvData)
+  link.setAttribute('download', `${filename}.csv`)
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}

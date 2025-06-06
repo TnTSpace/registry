@@ -1098,12 +1098,36 @@
 					"subdirectory": true,
 					"list": true,
 					"files": [
-						"github-editor.svelte"
+						"github-editor.svelte",
+						"preview-content.svelte",
+						"table.css",
+						"write-content.svelte"
 					],
-					"localDependencies": [],
-					"dependencies": [],
+					"localDependencies": [
+						"ui/tabs",
+						"utils/tiptap-custom-tablecell",
+						"utils/tiptap-iframe",
+						"ui/tiptap-editor"
+					],
+					"dependencies": [
+						"lucide-svelte@^0.485.0",
+						"@tiptap/core@^2.11.7",
+						"@tiptap/extension-image@^2.11.7",
+						"@tiptap/extension-text-align@^2.11.7",
+						"@tiptap/starter-kit@^2.11.7",
+						"@tiptap/extension-table@^2.11.7",
+						"@tiptap/extension-table-header@^2.11.7",
+						"@tiptap/extension-underline@^2.11.7",
+						"@tiptap/extension-table-row@^2.11.7",
+						"@tiptap/extension-link@^2.11.7"
+					],
 					"devDependencies": [],
-					"_imports_": {}
+					"_imports_": {
+						"$lib/components/ui/tabs": "{{ui/tabs}}",
+						"$lib/utils/tiptap-custom-tablecell": "{{utils/tiptap-custom-tablecell}}",
+						"$lib/utils/tiptap-iframe": "{{utils/tiptap-iframe}}",
+						"../tiptap-editor/Display.svelte": "{{ui/tiptap-editor}}/Display.svelte"
+					}
 				},
 				{
 					"name": "header",
@@ -1595,6 +1619,27 @@
 					"dependencies": [
 						"datatables.net-dt@^2.3.0",
 						"datatables.net-responsive-dt@^3.0.4"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "reveal",
+					"directory": "src/lib/components/ui/reveal",
+					"category": "ui",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"reveal-presentation.css",
+						"reveal-presentation.svelte",
+						"reveal-slide.svelte",
+						"reveal.svelte",
+						"types.ts"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"reveal.js@^5.2.1"
 					],
 					"devDependencies": [],
 					"_imports_": {}
