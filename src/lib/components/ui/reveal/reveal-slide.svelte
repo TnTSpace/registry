@@ -23,7 +23,7 @@ const { image, id, cta, url, subline, name } = presentation
 	data-auto-animate={animate || null}
 	data-auto-animate-restart={restart || null}>
 	<div class="flex flex-col items-center gap-4">
-    <h2>{name}</h2>
+    <!-- <h2>{name}</h2> -->
     <p>{subline}</p>
     <a href={url} class="btn btn-constant-white !w-fit py-3 px-8 opacity-80" aria-label={cta}>{cta}</a>
   </div>

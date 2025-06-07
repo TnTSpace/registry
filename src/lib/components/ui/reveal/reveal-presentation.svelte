@@ -1,4 +1,5 @@
 <script lang="ts">
+	import RevealSlide from "./reveal-slide.svelte";
 	import type { iPresentation } from "./types";
 
   interface Props {
@@ -9,5 +10,5 @@
 </script>
 
 {#each presentations as presentation, i}
-   <!-- content here -->
+ <RevealSlide {presentation} />
 {/each}

@@ -22,7 +22,7 @@
 	import TiptapEditor from '$lib/components/ui/tiptap-editor/tiptap-editor.svelte';
 	import GithubEditor from '$lib/components/ui/github-editor/github-editor.svelte';
 	import type { iPresentation } from '$lib/components/ui/reveal/types';
-	import Reveal from '$lib/components/ui/reveal/reveal.svelte';
+	import RevealDeck from '$lib/components/ui/reveal/reveal-deck.svelte';
 
 	let { data }: { data: PageServerData } = $props();
 
@@ -93,7 +93,7 @@
 		alt: 'Jordan Recruitments'
 	}}
 />
-<Reveal {presentations} />
+<RevealDeck {presentations} />
 <TagsInput />
 <PhoneInput {country} />
 <TelInput {country} class={removeRingClasses()} />

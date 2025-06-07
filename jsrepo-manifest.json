@@ -1631,10 +1631,12 @@
 					"subdirectory": true,
 					"list": true,
 					"files": [
+						"reveal-custom.css",
+						"reveal-deck.svelte",
 						"reveal-presentation.css",
 						"reveal-presentation.svelte",
 						"reveal-slide.svelte",
-						"reveal.svelte",
+						"reveal.css",
 						"types.ts"
 					],
 					"localDependencies": [],

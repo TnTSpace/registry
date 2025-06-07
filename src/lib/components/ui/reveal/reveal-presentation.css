@@ -1,4 +1,7 @@
-.reveal {
+@import url("./reveal.css");
+@import url("./reveal-custom.css");
+
+/* .reveal {
   height: 400px !important;
 }
 
@@ -10,4 +13,4 @@
 
 .reveal .slides section * {
   font-size: 16px !important;
-}
+} */
