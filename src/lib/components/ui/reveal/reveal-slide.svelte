@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { iPresentation } from "./types";
+	import { Button } from "../button";
 
   interface Props {
     presentation: iPresentation;
@@ -8,7 +9,7 @@
   }
 
   let { presentation, animate, restart }: Props = $props()
-const { image, id, cta, url, subline, name } = presentation
+const { image, id, cta, href, subline, name } = presentation
 </script>
 
 <section
@@ -25,6 +26,6 @@ const { image, id, cta, url, subline, name } = presentation
 	<div class="flex flex-col items-center gap-4">
     <!-- <h2>{name}</h2> -->
     <p>{subline}</p>
-    <a href={url} class="btn btn-constant-white !w-fit py-3 px-8 opacity-80" aria-label={cta}>{cta}</a>
+		<Button {href} aria-label={cta} variant="outline" class="capitalize">{cta}</Button>
   </div>
 </section>

@@ -8,6 +8,6 @@ export interface iPresentation {
   active: boolean;
   order: number;
   cta: string;
-  url: string;
+  href: string;
   subline: string
 }

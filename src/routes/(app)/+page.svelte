@@ -60,7 +60,7 @@
 			subline: "Remnant Christian Network Lagos",
 			image: "https://www.rcnlagos.org/images/uploads/rcnlagos.webp",
 			type: "Generic",
-			url: "https://www.rcnlagos.org/about/the-birth-of-rcn-lagos",
+			href: "https://www.rcnlagos.org/about/the-birth-of-rcn-lagos",
 			cta: "rcn lagos",
 			videourl: ""
 		},
@@ -73,7 +73,7 @@
 			subline: "Lagos must pray",
 			image: "https://www.rcnlagos.org/images/uploads/prayercells.webp",
 			type: "Generic",
-			url: "https://www.rcnlagos.org/prayercells",
+			href: "https://www.rcnlagos.org/prayercells",
 			cta: "prayercells",
 			videourl: ""
 		}

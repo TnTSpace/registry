@@ -1639,12 +1639,16 @@
 						"reveal.css",
 						"types.ts"
 					],
-					"localDependencies": [],
+					"localDependencies": [
+						"ui/button"
+					],
 					"dependencies": [
 						"reveal.js@^5.2.1"
 					],
 					"devDependencies": [],
-					"_imports_": {}
+					"_imports_": {
+						"../button": "{{ui/button}}"
+					}
 				},
 				{
 					"name": "scroll-area",
@@ -2223,22 +2227,27 @@
 					"subdirectory": true,
 					"list": true,
 					"files": [
+						"auth-dialog.svelte",
+						"user-oauth.svelte",
 						"user.svelte"
 					],
 					"localDependencies": [
-						"ui/skeleton",
+						"interface/index",
 						"ui/button",
-						"utils/index"
+						"utils/index",
+						"ui/skeleton"
 					],
 					"dependencies": [
-						"svelte-clerk@^0.10.7",
-						"lucide-svelte@^0.485.0"
+						"lucide-svelte@^0.485.0",
+						"svelte-clerk@^0.10.7"
 					],
 					"devDependencies": [],
 					"_imports_": {
+						"$lib/interface": "{{interface/index}}",
+						"../button": "{{ui/button}}",
+						"$lib/utils": "{{utils/index}}",
 						"$lib/components/ui/skeleton/skeleton.svelte": "{{ui/skeleton}}/skeleton.svelte",
-						"$lib/components/ui/button": "{{ui/button}}",
-						"$lib/utils": "{{utils/index}}"
+						"$lib/components/ui/button": "{{ui/button}}"
 					}
 				},
 				{

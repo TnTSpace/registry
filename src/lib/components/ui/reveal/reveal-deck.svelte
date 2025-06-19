@@ -34,7 +34,7 @@
 	});
 </script>
 
-<div class="reveal overflow-hidden md:rounded-lg">
+<div class="reveal overflow-hidden md:rounded-lg aspect-video md:aspect-[16/6]">
 	<div class="slides">
 		<RevealPresentation {presentations} />
 	</div>
